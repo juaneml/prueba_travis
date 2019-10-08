@@ -9,11 +9,13 @@ import unittest
 #from principal import *
 
 
-class TestMethods(unittest.TestCase):
+#class TestMethods(unittest.TestCase):
     
-    prueba = 2
-    def prueba(self):
-        self.assertEqual(self.prueba,2,"Resultado correcto")
+def inc(x):
+    return x + 1
+
+def test_answer():
+    assert inc(3) == 4
         
 if __name__ == '__main__':
     unittest.main()
