@@ -16,8 +16,10 @@ class TestMethods(unittest.TestCase):
 
     # pruebaNot = Newsgroups()
     # pruebaNot.Crea_news(lista_noticias)
-    def prueba():
-        a = a +1
+    prueba = 2
+    def prueba(self):
+        self.assertEqual(self.prueba,2,"Resultado correcto")
+        
     
 if __name__ == '__main__':
     unittest.main()
