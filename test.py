@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import sys
-import imp
+#import imp
 import pytest
 import unittest
 #sys.path.append('../src/')
