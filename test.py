@@ -6,7 +6,7 @@ import imp
 import pytest
 import unittest
 #sys.path.append('../src/')
-from principal import *
+#from principal import *
 
 
 class TestMethods(unittest.TestCase):
