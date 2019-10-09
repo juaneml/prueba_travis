@@ -3,8 +3,12 @@ language: python
 python:
   - "3.7.3"
 
-services:
-  - postgresql 
+addons:
+  postgresql: '11.5'
+  apt:
+    packages:
+      - postgresql-server-dev-11.5
+
 # command to install dependencies
 install:
   - pip3 install -r requirements.txt
