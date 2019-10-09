@@ -4,10 +4,22 @@ python:
   - "3.7.3"
 
 addons:
-  postgresql: '11.5'
+  postgresql: "11.5"
   apt:
     packages:
-      - postgresql-server-dev-11.5
+    - postgresql-11.5
+    - postgresql-client-11.5
+
+env:
+  global:
+  - PGPORT=5433
+  
+services:
+  - postgresql 
+
+before_script:
+  - psql -c 'create databases travis_ci_test;' -U postgres
+
 
 # command to install dependencies
 install:
