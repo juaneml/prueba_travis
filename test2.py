@@ -4,8 +4,7 @@ import psycopg2
 import pprint
 import sys
 import pytest
-import pytest_pgsql
-import datetime
+
 from pytest import ExitCode
 
 
