@@ -1,4 +1,7 @@
 import pytest
+import requests
+import pprint
+import sys
 import test2
 
 def test_blog_landing_page_ok():
