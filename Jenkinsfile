@@ -4,7 +4,7 @@ pipeline {
     stages{
         stage ('check git') {
             steps{
-                git poll: true, url: 'git@github.com:juaneml/prueba_travis.git' 
+                git poll: true, url: 'https://github.com/juaneml/prueba_travis.git' 
             }
         }
     }
