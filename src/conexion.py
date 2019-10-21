@@ -1,5 +1,5 @@
 import psycopg2
-import pprint
+#import pprint
 import sys
 
 class Conexion:
