@@ -15,6 +15,14 @@ pipeline {
                 '''
             }
         }
+
+        stage('script'){
+            steps{
+                sh '''
+                    pytest -v test.py
+                '''
+            }
+        }
     }
 
     
