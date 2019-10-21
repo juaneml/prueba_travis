@@ -5,7 +5,7 @@ import sys
 class Conexion:
 	def conexion(self):
 		try:
-			#connection = psycopg2.connect(user = "postgres",password = "j9u4a1n",host = "127.0.0.1",port = "5432",database = "test")
+			#connection = psycopg2.connect(user = "postgres",password = "j9u4a1n",host = "127.0.0.1",port = "5432",database = "sistema")
             connection = psycopg2.connect(user = "postgres",password = " ",host = "127.0.0.1",port = "5432",database="travis_ci_test")
 			cursor = connection.cursor()
 			# Print PostgreSQL Connection properties
@@ -15,7 +15,7 @@ class Conexion:
 			cursor.execute("select * from usuarios;")
 			#record = cursor.fetchone()
 			record = cursor.fetchall()
-			pprint.pprint(record)
+			#pprint.pprint(record)
 			#print("You are connected to - ", record,"\n")
 			return True
 		except (Exception, psycopg2.Error) as error :
@@ -30,7 +30,7 @@ class Conexion:
 			return False
 
 	if __name__ == "__main__":
-		conexion()
+		conexion(0)
 
 
 

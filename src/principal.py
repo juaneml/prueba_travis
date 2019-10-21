@@ -22,8 +22,8 @@ import sys
  """
  
 class Servicio:
-    day = 0
-    din_aho = 0
+    day = []
+    din_aho = []
     tipo_tab = []
     marca  = []
     num_cigar = []
@@ -48,38 +48,63 @@ class Servicio:
 
     
     """ Devuelve el número de días que el usuario lleva sin fumar"""
-    def get_day(self):
-        return self.day
+    def get_day(self,int):
+        try:
+            return self.day[int]
+        except:
+            return False
 
     """ Devuelve el dinero ahorrado en euros """
     def get_dinAho(self,string):
-        return self.din_aho[string]
+        try:
+            return self.din_aho[string]
+        except:
+            return False
 
 
     """ Devuelve la marca """
     def get_marca(self,string):
-        return self.marca[string]
+        try:
+            return self.marca[string]
+        except:
+            return False
 
     """ Devuelve el numero de cigarrillos """
     def get_Ncigar(self,string):
-        return self.num_cigar[string]
+        try:
+            return self.num_cigar[string]
+        except:
+            return False
 
     """ Devuelve los logs de los usuarios """
     def get_logs(self):
-        return self.logs
+        try:
+            return self.logs
+        except:
+            return False
     
     """ Devuelve el número de usuarios """
     def get_numUsuarios(self):
-        return self.num_usuarios
+        try:
+            return self.num_usuarios
+        except:
+            return False
 
     """ Devuelve la moneda """
 
     def get_moneda(self):
-        return self.moneda
+        try:
+            return self.moneda
+        except:
+            return False
 
     """ Cambia la moneda """
     def set_moneda(self,string):
-        self.moneda = string
+        if(type(string) != int):
+            self.moneda = string
+            return True
+        else:
+            return False
 
     """ Add nombre marca """
     def add_marca(self,string):
@@ -264,7 +289,7 @@ if __name__ == "__main__":
        lista_tabaco = json.load(marcas)
 
     serv = Servicio() 
-    serv.crea_sistema(usuario,usuario.num_usuarios,lista_tabaco)
+    serv.crea_sistema(usuario,serv.get_progreso(),lista_tabaco)
 
     # for i in range(serv.get_numUsuarios()):
     #     print (serv.to_s(i,usuario))
