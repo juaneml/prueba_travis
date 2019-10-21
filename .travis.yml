@@ -18,7 +18,7 @@ before_script:
 
   - psql -d 'travis_ci_test' -c "INSERT INTO usuarios(name, pw, progres, marca, tipo, cigar) VALUES ('Usuario 1',md5('abc123'),'1995-11-06T23:20:50', 'MarcaA', 'Industrial', 22);" -b -U postgres
   - psql -d 'travis_ci_test' -c "select * from usuarios;" -U postgres
-  - psql -d mwt
+
   
 # command to install dependencies
 
