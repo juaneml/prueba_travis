@@ -5,7 +5,7 @@ import sys
 class Conexion:
 	def conexion(self):
 		try:
-            connection = psycopg2.connect(user = "postgres",password ="bar",host = "localhost",database="travis_ci_test")
+            connection = psycopg2.connect(user = "postgres",password ="bar",host = "localhost", database = "travis_ci_test")
 			#connection = psycopg2.connect(user = "postgres",password = "j9u4a1n",host = "127.0.0.1",database = "sistema")
             
 			cursor = connection.cursor()
