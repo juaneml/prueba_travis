@@ -10,7 +10,7 @@ before_script:
   - psql -c 'create database travis_ci_test;' -U postgres
   - psql -d travis_ci_test -c 'create table usuarios (ID_Usu serial primary key not null, name text,pw text, progres text, marca text, tipo text, cigar integer);' -U postgres
 
-  - psql -d 'travis_ci_test' -c 'insert into usuarios (name,pw,progres,marca,tipo,cigar) values('Usuario 1','123','23','MarcaA','Industrial',22);' -U postgres
+  - psql -d 'travis_ci_test' -c 'insert into usuarios values('Usuario 1','123','23','MarcaA','Industrial',22);' -U postgres
   - psql -d 'travis_ci_test' -c "select * from usuarios;" -U postgres
   
 # command to install dependencies
