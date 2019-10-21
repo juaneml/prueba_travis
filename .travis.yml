@@ -9,9 +9,13 @@ services:
 before_script:
   - psql -c 'create database travis_ci_test;' -U postgres
   - psql -U postgres travis_ci_test
-  - psql -c 'create table usuarios (ID_Usu serial primary key not null, name text, pw text, progres text, marca text, tipo text, cigar integer);' -U postgres
-  - psql -c 'insert into usuarios (name,pw,progres,marca,tipo,cigar) VALUES('Usuario 1','123','23','MarcaA','Industrial',22);' -U postgres
-
+  - \d
+  - create table usuarios (ID_Usu serial primary key not null, name text, pw text, progres text, marca text, tipo text, cigar integer);
+  - \d
+  - insert into usuarios (name,pw,progres,marca,tipo,cigar) VALUES('Usuario 1','123','23','MarcaA','Industrial',22);
+  - select * from usuarios
+  - \q
+  - exit
 # command to install dependencies
 install:
   - pip3 install -r requirements.txt
