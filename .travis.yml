@@ -16,4 +16,4 @@ before_script:
 # command to install dependencies
 install:
   - pip3 install -r requirements.txt
-script: pytest -v test.py
+script: cd ./test && pytest -v test.py 
