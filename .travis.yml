@@ -8,7 +8,7 @@ services:
 
 before_script:
   - psql -c 'create database travis_ci_test;' -U postgres
-  - psql -c 'create table usuarios (ID_Usu serial primary key not null, name text, pw text, progres text, marca text, tipo text, N_cigar integer;' -U postgres
+  - psql -c 'create table usuarios (ID_Usu serial primary key not null, name text, pw text, progres text, marca text, tipo text, N_cigar integer);' -U postgres
 # command to install dependencies
 install:
   - pip3 install -r requirements.txt
