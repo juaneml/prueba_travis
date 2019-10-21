@@ -6,7 +6,7 @@ class Conexion:
 	def conexion(self):
 		try:
 			#connection = psycopg2.connect(user = "postgres",password = "j9u4a1n",host = "127.0.0.1",database = "sistema")
-            connection = psycopg2.connect(user = "postgres",host = "localhost",database="travis_ci_test")
+            connection = psycopg2.connect(user = "postgres",password ="bar",host = "localhost",database="travis_ci_test")
 			cursor = connection.cursor()
 			# Print PostgreSQL Connection properties
 			#print ( connection.get_dsn_parameters(),"\n")
