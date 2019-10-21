@@ -9,7 +9,11 @@ pipeline {
         }
 
         stage('dependences'){
-            pip3 install -r requirements.txt
+            steps{
+                sh '''
+                    pip3 install -r requirements.txt
+                '''
+            }
         }
     }
 
