@@ -11,7 +11,7 @@ import json
 sys.path.append('../src/')
 from principal import *
 from usuario import *
-#from conexion import *
+from conexion import *
 class TestMethods(unittest.TestCase):
     #conex = Conexion()
     with open('../json/datos.json','r') as usuarios:
@@ -59,8 +59,8 @@ class TestMethods(unittest.TestCase):
     #     self.assertEqual(self.pruebaServicio.set_moneda(0),False, "Dato incorrecto")
     #     self.assertEqual(self.pruebaServicio.set_moneda("Libra"),True, "Dato correcto")
 
-    #def test_conex(self):
-    #    self.assertEqual(self.conex.conexion(),True,"Conexión con éxito" )    
+    def test_conex(self):
+        self.assertEqual(self.conex.conexion(),True,"Conexión con éxito" )    
 if __name__ == '__main__':
     unittest.main()
     
