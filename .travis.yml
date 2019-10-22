@@ -13,7 +13,6 @@ before_intall:
   - sudo service postgresql start 9*
 before_script:
   - psql -c 'create database travis_ci_test;' -U postgres
-  - cp config/database.yml.travis config/database.yml
   - psql -d travis_ci_test -c 'create table usuarios (ID_Usu serial primary key not null, name text,pw text, progres text, marca text, tipo text, cigar integer);' -U postgres
 
   - psql -d 'travis_ci_test' -c "INSERT INTO usuarios(name, pw, progres, marca, tipo, cigar) VALUES ('Usuario 1',md5('abc123'),'1995-11-06T23:20:50', 'MarcaA', 'Industrial', 22);" -b -U postgres
