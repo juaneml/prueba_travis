@@ -17,7 +17,7 @@ class Conexion:
 			#record = cursor.fetchone()
 			record = cursor.fetchall()
 			#pprint.pprint(record)
-			#print("You are connected to - ", record,"\n")
+			print("You are connected to - ", record,"\n")
 			return True
 		except (Exception, psycopg2.Error) as error :
 			print ("Error while connecting to PostgreSQL", error)
