@@ -54,10 +54,10 @@ class TestMethods(unittest.TestCase):
        
     """ test cambiar moneda """
 
-    # def test_moneda(self):
+    def test_moneda(self):
         
-    #     self.assertEqual(self.pruebaServicio.set_moneda(0),False, "Dato incorrecto")
-    #     self.assertEqual(self.pruebaServicio.set_moneda("Libra"),True, "Dato correcto")
+        self.assertEqual(self.pruebaServicio.set_moneda(0),False, "Dato incorrecto")
+        self.assertEqual(self.pruebaServicio.set_moneda("Libra"),True, "Dato correcto")
 
     def test_conex(self):
         self.assertEqual(self.conex.conexion(),True,"Conexión con éxito" ) 
