@@ -11,7 +11,7 @@ import json
 sys.path.append('../src/')
 from principal import *
 from usuario import *
-from conexion import *
+#from conexion import *
 class TestMethods(unittest.TestCase):
     #conex = Conexion()
     with open('../json/datos.json','r') as usuarios:
