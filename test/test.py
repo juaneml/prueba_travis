@@ -60,7 +60,8 @@ class TestMethods(unittest.TestCase):
     #     self.assertEqual(self.pruebaServicio.set_moneda("Libra"),True, "Dato correcto")
 
     def test_conex(self):
-        self.assertEqual(self.conex.conexion(),True,"Conexión con éxito" )    
+        self.assertEqual(self.conex.conexion(),True,"Conexión con éxito" ) 
+        print("Conexión con éxito",self.conex.conexion())
 if __name__ == '__main__':
     unittest.main()
     
