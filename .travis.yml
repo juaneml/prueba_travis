@@ -3,6 +3,11 @@ language: python
 python:
   - "3.7.3"
 
+node_js:
+  - node
+
+install:
+  - npm ci 
 services:
   - postgresql 
 
@@ -23,4 +28,7 @@ before_script:
 
 install:
   - pip3 install -r requirements.txt
-script: cd ./test && pytest -s -v test.py 
+script: 
+  - cd ./test && pytest -s -v test.py 
+  - coverage run test.py
+  - coverage report -m test.py 

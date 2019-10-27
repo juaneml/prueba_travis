@@ -7,14 +7,22 @@
     "test": "test"
   },
   "dependencies": {
+    "coverage": "^0.4.1",
     "index.js": "0.0.3",
     "moment": "^2.24.0",
     "package": "^1.0.1",
     "package.json": "^2.0.1"
   },
-  "devDependencies": {},
+ 
+  "devDependencies": {
+    "coveralls": "^3.0.7"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "lollup -c",
+    "lint": "eslint '**/*.js'",
+    "lint:fis":"prettier-eslint'**/*js' --write",
+    "test":"pytest"
+    
   },
   "repository": {
     "type": "git",

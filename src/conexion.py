@@ -4,9 +4,10 @@ import sys
 
 class Conexion:
 	def conexion(self):
+		connection = ""
 		try:
+			#connection = psycopg2.connect(user = "postgres",password="",host = "localhost",database = "sistema")
 			connection = psycopg2.connect(user = "postgres",host = "localhost",database = "travis_ci_test")
-            
 			cursor = connection.cursor()
 			# Print PostgreSQL Connection properties
 			#print ( connection.get_dsn_parameters(),"\n")
