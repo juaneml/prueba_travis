@@ -29,9 +29,9 @@ before_script:
 install:
   - pip3 install -r requirements.txt
   - pip3 install codecov
+  - pip3 install pytest-cov
 script: 
   - cd ./test && pytest -s -v test.py 
-  - nosetests ./test.py -v — with-coverage
 after_success:
   - coverage run test.py
   - coverage report -m test.py 
