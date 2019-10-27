@@ -37,8 +37,9 @@ class TestMethods(unittest.TestCase):
     import sys
     
     with open('../data.yaml') as f:
-        lista = yaml.load(f)
+        lista = yaml.load(f,Loader=yaml.FullLoader)
     print (lista)
+
 
     """ test nombre usuario """
 
