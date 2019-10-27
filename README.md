@@ -5,4 +5,4 @@
 
 **npm** [![Build Status](https://travis-ci.org/juaneml/prueba_travis.svg?branch=master)](https://travis-ci.org/juaneml/prueba_travis)
 
-
+[![codecov](https://codecov.io/gh/juaneml/prueba_travis/branch/master/graph/badge.svg)](https://codecov.io/gh/juaneml/prueba_travis)
