@@ -1,0 +1,29 @@
+{
+  "name": "prueba_travis",
+  "version": "1.0.0",
+  "description": "[![Build Status](https://travis-ci.org/juaneml/prueba_travis.svg?branch=master)](https://travis-ci.org/juaneml/prueba_travis)",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "index.js": "0.0.3",
+    "moment": "^2.24.0",
+    "package": "^1.0.1",
+    "package.json": "^2.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/juaneml/prueba_travis.git"
+  },
+  "author": "juaneml User <juanes.ml89@gmail.com> (http://example.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/juaneml/prueba_travis/issues"
+  },
+  "homepage": "https://github.com/juaneml/prueba_travis#readme"
+}

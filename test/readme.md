@@ -1,0 +1,2 @@
+# Tests para el sistema
+## Se han creado distintos tests para comprobar el buen funcionamiento de las funciones del sistema, posteriormente se añadirán más test para [PostgreSQL](https://www.postgresql.org/).

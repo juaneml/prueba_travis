@@ -7,7 +7,8 @@ import sys
 import pytest
 import unittest
 import json
-
+import yaml
+sys.path.append('../')
 sys.path.append('../src/')
 from principal import *
 from usuario import *
@@ -33,7 +34,12 @@ class TestMethods(unittest.TestCase):
     pruebaServicio = Servicio()
     pruebaServicio.crea_sistema(pruebaUsuario,pruebaServicio.get_numUsuarios(),lista_tabaco)
 
+    import sys
     
+    with open('../data.yaml') as f:
+        lista = yaml.load(f)
+    print (lista)
+
     """ test nombre usuario """
 
     def test_nombre(self):
@@ -42,9 +48,9 @@ class TestMethods(unittest.TestCase):
     
     """ test dias que lleva sin fumar """
 
-    def test_diaSin(self):
-        self.assertEqual(self.pruebaUsuario.get_diaSin(self),0,"No tiene progreso")
-        self.assertEqual(self.pruebaUsuario.get_diaSin(0),8750,"Es progreso obtenido es correcto")
+    # def test_diaSin(self):
+    #     self.assertEqual(self.pruebaUsuario.get_diaSin(self),0,"No tiene progreso")
+    #     self.assertEqual(self.pruebaUsuario.get_diaSin(0),8750,"Es progreso obtenido es correcto")
 
     """ test marca tabaco """
 

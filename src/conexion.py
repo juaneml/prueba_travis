@@ -5,8 +5,7 @@ import sys
 class Conexion:
 	def conexion(self):
 		try:
-			connection = psycopg2.connect(user = "postgres",host = "localhost", database = "travis_ci_test")
-			
+			connection = psycopg2.connect(user = "postgres",host = "localhost",password="j9u4a1n",database="sistema")#,database = "travis_ci_test")
             
 			cursor = connection.cursor()
 			# Print PostgreSQL Connection properties
@@ -20,15 +19,15 @@ class Conexion:
 			print("You are connected to - ", record,"\n")
 			return True
 		except (Exception, psycopg2.Error) as error :
-			print ("Error while connecting to PostgreSQL", error)
-			#finally:
-			#closing database connection.
-			if(connection):
-				cursor.close()
-				connection.close()
-		
-			print("PostgreSQL connection is closed")
-			return False
+				print ("Error while connecting to PostgreSQL", error)
+				#finally:
+				#closing database connection.
+				if(connection):
+					cursor.close()
+					connection.close()
+			
+				print("PostgreSQL connection is closed")
+				return False
 
 	if __name__ == "__main__":
 		conexion(0)
