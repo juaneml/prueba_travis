@@ -1,4 +1,4 @@
 Hug==2.6.0
 pytest==5.2.1
-PyYAML==4.2
+PyYAML==5.1.2
 psycopg2==2.8.3
