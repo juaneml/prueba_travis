@@ -1,6 +1,7 @@
 {
     "codecov": {
-        "require_ci_to_pass": true
+        "require_ci_to_pass": true,
+        "token": "d083f686-8673-49f1-8b91-24afe8872f17"
     }, 
     "comment": {
         "behavior": "default", 
@@ -30,4 +31,5 @@
             }
         }
     }
+    
 }
