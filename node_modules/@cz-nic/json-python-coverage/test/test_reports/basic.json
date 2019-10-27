@@ -1,0 +1,80 @@
+{
+    "total": {
+        "lines": {
+            "total": 865,
+            "covered": 736,
+            "skipped": 0,
+            "pct": 85.09
+        },
+        "statements": {
+            "total": 876,
+            "covered": 746,
+            "skipped": 0,
+            "pct": 85.16
+        },
+        "functions": {
+            "total": 276,
+            "covered": 203,
+            "skipped": 0,
+            "pct": 73.55
+        },
+        "branches": {
+            "total": 315,
+            "covered": 232,
+            "skipped": 0,
+            "pct": 73.65
+        }
+    },
+    "test_file.js": {
+        "lines": {
+            "total": 26,
+            "covered": 25,
+            "skipped": 0,
+            "pct": 96.15
+        },
+        "functions": {
+            "total": 7,
+            "covered": 6,
+            "skipped": 0,
+            "pct": 85.71
+        },
+        "statements": {
+            "total": 26,
+            "covered": 25,
+            "skipped": 0,
+            "pct": 96.15
+        },
+        "branches": {
+            "total": 10,
+            "covered": 6,
+            "skipped": 0,
+            "pct": 60
+        }
+    },
+    "test_file_2.js": {
+        "lines": {
+            "total": 50,
+            "covered": 29,
+            "skipped": 0,
+            "pct": 58
+        },
+        "functions": {
+            "total": 24,
+            "covered": 12,
+            "skipped": 0,
+            "pct": 50
+        },
+        "statements": {
+            "total": 51,
+            "covered": 29,
+            "skipped": 0,
+            "pct": 56.86
+        },
+        "branches": {
+            "total": 25,
+            "covered": 13,
+            "skipped": 0,
+            "pct": 52
+        }
+    }
+}

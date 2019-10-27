@@ -7,22 +7,21 @@
     "test": "test"
   },
   "dependencies": {
+    "@cz-nic/json-python-coverage": "^0.1.0",
     "coverage": "^0.4.1",
     "index.js": "0.0.3",
     "moment": "^2.24.0",
     "package": "^1.0.1",
     "package.json": "^2.0.1"
   },
- 
   "devDependencies": {
     "coveralls": "^3.0.7"
   },
   "scripts": {
     "build": "lollup -c",
     "lint": "eslint '**/*.js'",
-    "lint:fis":"prettier-eslint'**/*js' --write",
-    "test":"pytest"
-    
+    "lint:fis": "prettier-eslint'**/*js' --write",
+    "test": "pytest"
   },
   "repository": {
     "type": "git",
