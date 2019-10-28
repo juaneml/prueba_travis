@@ -28,7 +28,7 @@ before_script:
 
 install:
   - pip3 install -r requirements.txt
-  - pip3 install --user codecov
+  - pip3 install codecov
   - pip3 install pytest-cov
 script: 
   - cd ./test && pytest -s -v test.py 
