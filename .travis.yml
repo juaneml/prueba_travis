@@ -32,8 +32,9 @@ install:
   - pip3 install pytest-cov
 script: 
   - cd ./test && pytest -s -v test.py 
+  - pytest --cov=./test
 after_success:
-  - codecov
+  - codecov -F
   #- coverage run test.py
   #- coverage report -m test.py 
   #- coverage run -m unittest discover
