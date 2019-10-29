@@ -34,7 +34,7 @@ install:
   - pip3 install coveralls
 script: 
   - cd ./test && pytest -s -v test.py 
-  - coverage run --source=prueba_travis test.py test
+  - coverage run test.py
   - coverage report -m
   - coverage html
   #- py.test coveralls/tests.py --doctest-modules --pep8 coveralls -v --cov coveralls --cov-report term-missing
