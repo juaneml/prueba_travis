@@ -264,9 +264,9 @@ class Servicio:
             if(i['moneda'] != None):
                 self.set_moneda(i['moneda'])
                 
-        for i in range(num_usu):
-            self.lista_tabaco.append(self.add_dinAho(usuario.get_cigar(i),usuario.get_marca(i),usuario.get_tipo(i) ,usuario.get_diaSin(i)))
-            self.lista_tabaco.append(self.add_progreso(usuario.get_progreso(i)))
+            for i in range(num_usu):
+                self.lista_tabaco.append(self.add_dinAho(usuario.get_cigar(i),usuario.get_marca(i),usuario.get_tipo(i) ,usuario.get_diaSin(i)))
+                self.lista_tabaco.append(self.add_progreso(usuario.get_progreso(i)))
 
 if __name__ == "__main__":
     with open('../json/datos.json','r') as usuarios:
@@ -287,6 +287,6 @@ if __name__ == "__main__":
 
     # for i in range(serv.get_numUsuarios()):
     #     print (serv.to_s(i,usuario))
-    
+    print(serv.get_dinAho(0))
     for i in range(serv.get_numUsuarios()):
         print (serv.to_Simple(i,usuario))
