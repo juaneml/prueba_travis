@@ -157,35 +157,38 @@ class Servicio:
         precio_uno = 0   
         dinAho_dia = 0  
         dinAho = 0.0    
-
-        if (marca == "MarcaA" and tipo == "Industrial"):
-            precio_uno = 4.50 / 20.0
-            dinAho_dia = precio_uno * num_cigar
-            dinAho = dinAho_dia * dias
-           
-
-        if (marca == "MarcaB" and tipo == "Industrial"):
-            precio_uno = 4.80 / 20.0
-            dinAho_dia = precio_uno * num_cigar
-            dinAho = dinAho_dia * dias
+        if(type(num) != str && type(marca) != int && type(dias) != str):
+            if (marca == "MarcaA" and tipo == "Industrial"):
+                precio_uno = 4.50 / 20.0
+                dinAho_dia = precio_uno * num_cigar
+                dinAho = dinAho_dia * dias
             
-        if (marca == "MarcaC" and tipo == "Industrial"):
-            precio_uno = 5.0 / 20.0
-            dinAho_dia = precio_uno * num_cigar
-            dinAho = dinAho_dia * dias 
-           
+
+            if (marca == "MarcaB" and tipo == "Industrial"):
+                precio_uno = 4.80 / 20.0
+                dinAho_dia = precio_uno * num_cigar
+                dinAho = dinAho_dia * dias
+                
+            if (marca == "MarcaC" and tipo == "Industrial"):
+                precio_uno = 5.0 / 20.0
+                dinAho_dia = precio_uno * num_cigar
+                dinAho = dinAho_dia * dias 
+            
+            
+            if (marca == "MarcaD" and tipo == "Liar"):
+                precio_uno = 3.5 / 30.0
+                dinAho_dia = precio_uno * num_cigar
+                dinAho = dinAho_dia * dias 
+            
+            if (marca == "MarcaE" and tipo == "Liar"):
+                precio_uno = 3.75 / 30.0
+                dinAho_dia = precio_uno * num_cigar
+                dinAho = dinAho_dia * dias 
         
-        if (marca == "MarcaD" and tipo == "Liar"):
-            precio_uno = 3.5 / 30.0
-            dinAho_dia = precio_uno * num_cigar
-            dinAho = dinAho_dia * dias 
-        
-        if (marca == "MarcaE" and tipo == "Liar"):
-            precio_uno = 3.75 / 30.0
-            dinAho_dia = precio_uno * num_cigar
-            dinAho = dinAho_dia * dias 
-        
-        self.din_aho.append(dinAho)
+            self.din_aho.append(dinAho)
+            return True
+        else:
+            return False
        
     """ Devuelve el progreso """
 
