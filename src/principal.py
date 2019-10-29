@@ -249,19 +249,13 @@ class Servicio:
         for i in dic:
             if(i['name'] != None):
                 self.lista_tabaco.append(self.add_marca(i['name']))
-            else:
-                self.lista_tabaco.append(self.add_marca(" "))
-
+            
             if(i['tipo'] != None):
                 self.lista_tabaco.append(self.add_tipo(i['tipo']))
-            else:
-                self.lista_tabaco.append(self.add_tipo(" "))
 
             if(i['capacidad'] != None):
                 self.lista_tabaco.append(self.add_numCigar(i['capacidad']))
-            else:
-                self.lista_tabaco.append(self.add_numCigar(" "))
-
+            
             if(i['precio'] != None):
                 self.lista_tabaco.append(self.add_marca(i['precio']))
 
@@ -270,9 +264,8 @@ class Servicio:
             
             
         for i in range(num_usu):
-            if(usuario.get_cigar(i) != 0):
-                self.lista_tabaco.append(self.add_dinAho(usuario.get_cigar(i),usuario.get_marca(i),usuario.get_tipo(i) ,usuario.get_diaSin(i)))
-                self.lista_tabaco.append(self.add_progreso(usuario.get_progreso(i)))
+            self.lista_tabaco.append(self.add_dinAho(usuario.get_cigar(i),usuario.get_marca(i),usuario.get_tipo(i) ,usuario.get_diaSin(i)))
+            self.lista_tabaco.append(self.add_progreso(usuario.get_progreso(i)))
 
 if __name__ == "__main__":
     with open('../json/datos.json','r') as usuarios:
