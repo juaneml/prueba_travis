@@ -37,6 +37,7 @@ script:
   - coverage run test.py
   - coverage report -m
   - coverage html
+  - coverage xml
   #- py.test coveralls/tests.py --doctest-modules --pep8 coveralls -v --cov coveralls --cov-report term-missing
   
   
