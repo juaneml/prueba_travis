@@ -43,7 +43,7 @@ script:
 
   
 after_success:
-  - codecov -F unittests  -t d083f686-8673-49f1-8b91-24afe8872f17
+  - codecov -F unittests  
   - coveralls
   #- coverage run test.py
   #- coverage report -m test.py 
