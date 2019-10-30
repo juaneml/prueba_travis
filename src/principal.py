@@ -87,16 +87,16 @@ class Servicio:
     def get_numUsuarios(self):
         try:
             return self.num_usuarios
-        except:
-            return False
+        #except:
+        #    return False
 
     """ Devuelve la moneda """
 
     def get_moneda(self):
         try:
             return self.moneda
-        except:
-            return False
+        #except:
+        #    return False
 
     """ Cambia la moneda """
     def set_moneda(self,string):
@@ -112,8 +112,8 @@ class Servicio:
         if(type(string) != int):
             self.marca.append(string)
             return True
-        else:
-            return False
+        #else:
+        #    return False
 
     
     """ Add tipo de tabaco """
@@ -125,8 +125,8 @@ class Servicio:
             self.tipo_tab.append(string)
             return True
         
-        else:
-            return False
+        #else:
+        #    return False
     
     """ Devuelve el tipo de tabaco"""
     def get_tipo(self,int):
@@ -141,8 +141,8 @@ class Servicio:
             self.num_cigar.append(int)
             return True
 
-        else:
-            return False
+        #else:
+        #    return False
 
     """ add Dinero ahorrado
         num: numero de cigarros
@@ -186,8 +186,8 @@ class Servicio:
         
             self.din_aho.append(dinAho)
             return True
-        else:
-            return False
+        #else:
+        #    return False
        
 
     """ Add progress """
@@ -206,24 +206,24 @@ class Servicio:
         self.num_usuarios = int
     
     """ Cambia el nombre """
-    def set_marca(self,string):
-        self.marca = string
+    #def set_marca(self,string):
+    #    self.marca = string
     
     """ Cambia el tipo """
-    def set_tipo(self,string):
-        self.tipo_tab = string
+    #def set_tipo(self,string):
+    #    self.tipo_tab = string
 
     """ Cambia la capacidad """
-    def set_capa(self,int):
-        self.num_cigar = int
+    #def set_capa(self,int):
+    #    self.num_cigar = int
 
     """ Cambia el precio """
-    def set_precio(self,int):
-        self.precio = int
+    #def set_precio(self,int):
+    #    self.precio = int
 
     """ Cambia el numero de cigarros """
-    def set_cigar(self,int):
-        self.num_cigar = int
+    #def set_cigar(self,int):
+    #    self.num_cigar = int
 
 
     """ Imprime la lista de los usuarios:
@@ -239,8 +239,8 @@ class Servicio:
             var = {"Nombre":lista.get_nombre(i),"marca": self.get_marca(i),"Tipo": self.get_tipo(i),"Num. cigarillos": lista.get_cigar(i),
             "Progreso": self.get_progreso(i),"Dinero Ahorrado": str(self.get_dinAho(i))+self.get_moneda() }
             return var
-        else:
-            return False
+        #else:
+        #    return False
 
     """ Imprime Nombre,progreso y dinero ahorrado """
     def to_Simple(self,i,lista):
@@ -272,21 +272,22 @@ class Servicio:
                 if(i['moneda'] != None):
                     self.set_moneda(i['moneda'])
    
-                for j in range(num_usu):
-                    self.lista_tabaco.append(self.add_dinAho(usuario.get_cigar(j),usuario.get_marca(j),usuario.get_tipo(j),usuario.get_diaSin(j)))
-                    self.lista_tabaco.append(self.add_progreso(usuario.get_progreso(j)) )
+        for j in range(num_usu):
+            self.lista_tabaco.append(self.add_dinAho(usuario.get_cigar(j),usuario.get_marca(j),usuario.get_tipo(j),usuario.get_diaSin(j)))
+            self.lista_tabaco.append(self.add_progreso(usuario.get_progreso(j)) )
 
-                    self.set_numUsuarios(num_usu)
-                    self.get_day(0)
-                    self.get_dinAho(0)
-                    self.get_Ncigar(0)
-                    self.get_logs()
-                    self.get_moneda()
-                    self.to_s(0,usuario)
-                    self.to_Simple(0,usuario)
+            self.set_numUsuarios(num_usu)
+            self.get_day(0)
+            self.get_dinAho(0)
+            self.get_Ncigar(0)
+            self.get_logs()
+            self.get_moneda()
+            self.to_s(0,usuario)
+            self.to_Simple(0,usuario)
+            self.get_progreso(0)
             return True
-        else:
-            return False
+        #else:
+        #    return False
 
 # if __name__ == "__main__":
 #     with open('../json/datos.json','r') as usuarios:

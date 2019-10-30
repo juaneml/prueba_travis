@@ -51,16 +51,16 @@ class Usuario:
         if(type(string) != int):
             self.nombre.append(string)
             return True
-        else:
-            return False
+        #else:
+        #    return False
     
     """ Devuelve el progreso """
     def get_progreso(self,string):
 
         if(type(string) != str):
             return (self.progreso[string])
-        else:
-            return False
+        #else:
+        #    return False
 
 
     """ Devuelve días sin fumar """
@@ -68,8 +68,8 @@ class Usuario:
 
         if(type(string) != str):
             return (self.get_progreso(string)[0])
-        else:
-            return False
+        #else:
+        #    return False
 
     """ Add el progreso """
     def add_progreso(self,string):
@@ -78,8 +78,8 @@ class Usuario:
             self.progreso.append([string.days, "días",str("{0:.2f}").format(string.seconds/60), "minutos y",string.seconds, "seg."])
 
             return True
-        else:
-            return False
+        #else:
+        #    return False
 
     """ Devuelve el número de cigarros que fumaba por día  """
 
@@ -92,8 +92,8 @@ class Usuario:
         if(type(int) != str):
             self.num_cigar.append(int)
             return True
-        else:
-            return False
+        #else:
+        #    return False
 
 
     """ Devuelve la contraseña"""
@@ -104,13 +104,13 @@ class Usuario:
 
     """ Cambia la contraseña """
 
-    def set_password(self,string):
+    #def set_password(self,string):
 
-        if(type(string) != self):
-            self.password = string
-            return True
-        else:
-            return False
+    #    if(type(string) != self):
+    #        self.password = string
+    #        return True
+    #    else:
+    #        return False
 
     """ Add password """
     def add_password(self,string):
@@ -119,8 +119,8 @@ class Usuario:
             self.password.append(string)
             return True
         
-        else:
-            return False
+        #else:
+        #   return False
 
 
     """ Devuelve la marca """
@@ -133,8 +133,8 @@ class Usuario:
         if(type(string) != int):
             self.marca.append(string)
             return True
-        else:
-            return False
+       # else:
+       #     return False
 
     """ Devuelve el número de usuarios """
     def get_numUsuarios(self):
@@ -153,25 +153,25 @@ class Usuario:
             self.tipo.append(string)
             return True
 
-        else:
-            return False
+        #else:
+        #    return False
 
     """ Cambia el nombre """
-    def set_nombre(self,usu,string):
-        self.nombre[usu] = string
+    #def set_nombre(self,usu,string):
+    #    self.nombre[usu] = string
     
     """ Cambia el número de cigarros """
-    def set_numCigar(self,usu,int):
-        self.num_cigar[usu] = int
+    #def set_numCigar(self,usu,int):
+    #    self.num_cigar[usu] = int
 
     """ Cambia el progreso """
-    def set_progreso(self,usu,string):
-        self.progreso[usu] = string
+    #def set_progreso(self,usu,string):
+    #    self.progreso[usu] = string
 
 
     """ Cambia la marca """
-    def set_marca(self,usu,string):
-        self.marca[usu] = string
+    #def set_marca(self,usu,string):
+    #    self.marca[usu] = string
 
 
     """ Cambia el numero de usuarios """
@@ -180,8 +180,8 @@ class Usuario:
 
 
     """ Cambia el tipo de tabaco """
-    def set_tipo(self,string):
-        self.tipo = string
+    #def set_tipo(self,string):
+    #    self.tipo = string
 
         
     """ Crea usuarios """
