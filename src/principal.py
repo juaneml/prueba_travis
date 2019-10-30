@@ -71,15 +71,15 @@ class Servicio:
 
     """ Devuelve el numero de cigarrillos """
     def get_Ncigar(self,string):
-        try:
-            return self.num_cigar[string]
+        #try:
+        return self.num_cigar[string]
         #except:
         #    return False
 
     """ Devuelve los logs de los usuarios """
     def get_logs(self):
-        try:
-            return self.logs
+        #try:
+        return self.logs
         #except:
         #    return False
     
