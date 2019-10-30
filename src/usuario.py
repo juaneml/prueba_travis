@@ -57,25 +57,26 @@ class Usuario:
     """ Devuelve el progreso """
     def get_progreso(self,string):
 
-        try:
+        if(type(string) != str):
             return (self.progreso[string])
-        except:
+        else:
             return False
 
 
     """ Devuelve días sin fumar """
     def get_diaSin(self,string):
 
-        try:
+        if(type(string) != str):
             return (self.get_progreso(string)[0])
-        except:
+        else:
             return False
 
     """ Add el progreso """
     def add_progreso(self,string):
 
         if(type(string) != datetime):
-            self.progreso.append(string)
+            self.progreso.append([string.days, "días",str("{0:.2f}").format(string.seconds/60), "minutos y",string.seconds, "seg."])
+
             return True
         else:
             return False
@@ -214,10 +215,16 @@ class Usuario:
                 fecha1 = datetime.now()
                 diferencia = fecha1 - datetime.strptime(i['progres'],'%Y-%m-%dT%H:%M:%S')
 
-                self.progreso.append([diferencia.days, "días",str("{0:.2f}").format(diferencia.seconds/60), "minutos y",diferencia.seconds, "seg."])
-
+                #self.progreso.append([diferencia.days, "días",str("{0:.2f}").format(diferencia.seconds/60), "minutos y",diferencia.seconds, "seg."])
+                self.add_progreso(diferencia)
             self.num_usuarios+=1
             self.set_numUsu(self.num_usuarios)
+            self.get_cigar(0)
+            self.get_diaSin(0)
+            self.get_marca(0)
+            self.get_numUsuarios()
+            self.get_tipo(0)
+            self.to_s(0)
             
 
     def to_s(self,i):
