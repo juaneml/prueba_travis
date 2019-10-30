@@ -21,7 +21,7 @@ class TestMethods(unittest.TestCase):
     pruebaUsuario = Usuario()
     pruebaUsuario.crea_usu(lista_usuario)
     
-    print(lista_usuario)
+    #print(lista_usuario)
 
     #for i in usuario:
     # for i in range(usuario.num_usuarios):
@@ -34,7 +34,6 @@ class TestMethods(unittest.TestCase):
     pruebaServicio = Servicio()
     pruebaServicio.crea_sistema(pruebaUsuario,pruebaServicio.get_numUsuarios(),lista_tabaco)
 
-    import sys
     
     with open('../data.yaml') as f:
         lista = yaml.load(f,Loader=yaml.FullLoader)
@@ -66,6 +65,9 @@ class TestMethods(unittest.TestCase):
         self.assertEqual(self.pruebaServicio.set_moneda(0),False, "Dato incorrecto")
         self.assertEqual(self.pruebaServicio.set_moneda("Libra"),True, "Dato correcto")
 
+    def test_to_s(self):
+        self.assertEqual(self.pruebaServicio.to_s('a',self.pruebaUsuario),False, "Indice incorrecto")
+    
     # def test_conex(self):
     #     self.assertEqual(self.conex.conexion(),True,"Conexión con éxito" ) 
     #     print("Conexión con éxito",self.conex.conexion())

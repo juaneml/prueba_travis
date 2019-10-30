@@ -189,14 +189,15 @@ class Servicio:
         else:
             return False
        
-    """ Devuelve el progreso """
-
-    def get_progreso(self,string):
-        return self.progres[string]
 
     """ Add progress """
     def add_progreso(self, string):
         self.progres.append(string)
+
+    """ Devuelve el progreso """
+
+    def get_progreso(self,string):
+        return self.progres[string]
 
     """ Cambia el número de usuarios """
     def set_numUsuarios(self,int):
@@ -232,9 +233,12 @@ class Servicio:
     """
 
     def to_s(self,i,lista):
-        var = {"Nombre":lista.get_nombre(i),"marca": self.get_marca(i),"Tipo": self.get_tipo(i),"Num. cigarillos": lista.get_cigar(i),
-        "Progreso": self.get_progreso(i),"Dinero Ahorrado": str(self.get_dinAho(i))+self.get_moneda() }
-        return var
+        if(type(i) != str):
+            var = {"Nombre":lista.get_nombre(i),"marca": self.get_marca(i),"Tipo": self.get_tipo(i),"Num. cigarillos": lista.get_cigar(i),
+            "Progreso": self.get_progreso(i),"Dinero Ahorrado": str(self.get_dinAho(i))+self.get_moneda() }
+            return var
+        else:
+            return False
 
     """ Imprime Nombre,progreso y dinero ahorrado """
     def to_Simple(self,i,lista):
@@ -244,49 +248,49 @@ class Servicio:
 
     """ crea sistema """
     def crea_sistema(self,usuario,num_usu,lista):
-        dic = lista
         
-        usuarios = self.set_numUsuarios(num_usu)
-
-        for i in dic:
-            if(i['name'] != None):
-                self.lista_tabaco.append(self.add_marca(i['name']))
+        if(type(lista) == list):
+            dic = lista
             
-            if(i['tipo'] != None):
-                self.lista_tabaco.append(self.add_tipo(i['tipo']))
+            usuarios = self.set_numUsuarios(num_usu)
 
-            if(i['capacidad'] != None):
-                self.lista_tabaco.append(self.add_numCigar(i['capacidad']))
-            
-            if(i['precio'] != None):
-                self.lista_tabaco.append(self.add_marca(i['precio']))
-
-            if(i['moneda'] != None):
-                self.set_moneda(i['moneda'])
+            for i in dic:
+                if(i['name'] != None):
+                    self.lista_tabaco.append(self.add_marca(i['name']))
                 
-            for i in range(num_usu):
-                self.lista_tabaco.append(self.add_dinAho(usuario.get_cigar(i),usuario.get_marca(i),usuario.get_tipo(i),usuario.get_diaSin(i)))
-                self.lista_tabaco.append(self.add_progreso(usuario.get_progreso(i)) )
+                if(i['tipo'] != None):
+                    self.lista_tabaco.append(self.add_tipo(i['tipo']))
+
+                if(i['capacidad'] != None):
+                    self.lista_tabaco.append(self.add_numCigar(i['capacidad']))
+                
+                if(i['precio'] != None):
+                    self.lista_tabaco.append(self.add_marca(i['precio']))
+
+                if(i['moneda'] != None):
+                    self.set_moneda(i['moneda'])
+   
+                for i in range(num_usu):
+                    self.lista_tabaco.append(self.add_dinAho(usuario.get_cigar(i),usuario.get_marca(i),usuario.get_tipo(i),usuario.get_diaSin(i)))
+                    self.lista_tabaco.append(self.add_progreso(usuario.get_progreso(i)) )
+
+                self.set_numUsuarios(num_usu)
+            return True
+        else:
+            return False
 
 if __name__ == "__main__":
     with open('../json/datos.json','r') as usuarios:
-        lista_tabaco = json.load(usuarios)
+        lista_usuario = json.load(usuarios)
     
     usuario = Usuario()
-    usuario.crea_usu(lista_tabaco)
-
-    #for i in usuario:
-    # for i in range(usuario.num_usuarios):
-    #     print(usuario.to_s(i))
+    usuario.crea_usu(lista_usuario)
 
     with open('../json/datos_tabaco.json','r') as marcas:
-       lista_tabaco = json.load(marcas)
+        lista_tabaco = json.load(marcas)
 
-    serv = Servicio() 
+    serv = Servicio()
     serv.crea_sistema(usuario,usuario.get_numUsuarios(),lista_tabaco)
-
-    # for i in range(serv.get_numUsuarios()):
-    #     print (serv.to_s(i,usuario))
-    print(serv.get_dinAho(0))
+    
     for i in range(serv.get_numUsuarios()):
-        print (serv.to_Simple(i,usuario))
+        print(serv.to_Simple(i,usuario))

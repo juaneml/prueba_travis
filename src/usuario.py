@@ -193,31 +193,23 @@ class Usuario:
         for i in dic:
             if(i['name'] != None):
                 self.lista_usuarios.append(self.add_nombre(i['name']))
-            else:
-                self.lista_usuarios.append(self.set_nombre(" "))
+            
 
             if(i['password'] != None):
                 self.lista_usuarios.append(self.add_password(i['password']))
-            else:
-                self.lista_usuarios.append(self.set_password(" "))
+            
 
             if(i['n_cigar'] != None):
                 self.lista_usuarios.append(self.add_numCigar(i['n_cigar']))
-            else:
-               self.lista_usuarios.append(self.add_numCigar(" "))
+            
 
             if(i['marca'] != None):
                 self.lista_usuarios.append(self.add_marca(i['marca']))
             
-            else:
-                self.lista_usuarios.append(self.add_marca(" "))
             
             if (i['tipo'] != None):
                 self.lista_usuarios.append(self.add_tipo(i['tipo']))
             
-            else:
-                self.lista_usuarios.append(self.add_tipo(" "))
-
             if(i['progres'] != None):
                 
                 fecha1 = datetime.now()
@@ -225,11 +217,6 @@ class Usuario:
 
                 self.progreso.append([diferencia.days, "días",str("{0:.2f}").format(diferencia.seconds/60), "minutos y",diferencia.seconds, "seg."])
 
-            else:
-                self.lista_usuarios.append(self.set_progreso(" "))
-
-            
-            
             self.num_usuarios+=1
             self.set_numUsu(self.num_usuarios)
             
@@ -238,3 +225,12 @@ class Usuario:
         var = {"Nombre": self.get_nombre(i),"Password": self.get_password(i),"Num. cigarillos": self.get_cigar(i),"Marca": self.get_marca(i),"Progreso": self.get_progreso(i)}
         return var
        
+if __name__ == "__main__":
+    with open('../json/datos.json','r') as usuarios:
+        lista_usuario = json.load(usuarios)
+    
+    usuario = Usuario()
+    usuario.crea_usu(lista_usuario)
+
+        
+    print(usuario.get_progreso(0))
