@@ -45,7 +45,7 @@ script:
   
 after_success:
   - codecov -F pytest 
-  - bash <(curl -s https://codecov.io/bash) -t  -f coverage.xml
+  - bash <(curl -s https://codecov.io/bash) -t CODECOV_TOKEN -f coverage.xml
   - coveralls
   #- coverage run test.py
   #- coverage report -m test.py 
