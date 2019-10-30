@@ -185,15 +185,16 @@ class Servicio:
                 dinAho = dinAho_dia * dias 
         
             self.din_aho.append(dinAho)
-            return True
+        return True
         #else:
         #    return False
        
 
     """ Add progress """
     def add_progreso(self, string):
-        if(string < self.get_numUsuarios()):
+            print("add_progres?")
             self.progres.append(string)
+            print(self.progres[0])
 
     """ Devuelve el progreso """
 
@@ -244,13 +245,14 @@ class Servicio:
 
     """ Imprime Nombre,progreso y dinero ahorrado """
     def to_Simple(self,i,lista):
-        var = {"Nombre" : lista.get_nombre(i),"Progreso": self.get_progreso(i),
-        "Dinero Ahorrado": str(self.get_dinAho(i))+self.get_moneda()}
+        if(type(i) != str and i< self.get_numUsuarios()):
+            var = {"Nombre" : lista.get_nombre(i),"Progreso": self.get_progreso(i),
+            "Dinero Ahorrado": str(self.get_dinAho(i))+self.get_moneda()}
         return var
 
     """ crea sistema """
     def crea_sistema(self,usuario,num_usu,lista):
-        
+        self.set_numUsuarios(num_usu)
         if(type(lista) == list):
             dic = lista
             
@@ -272,35 +274,39 @@ class Servicio:
                 if(i['moneda'] != None):
                     self.set_moneda(i['moneda'])
    
-        for j in range(num_usu):
-            self.lista_tabaco.append(self.add_dinAho(usuario.get_cigar(j),usuario.get_marca(j),usuario.get_tipo(j),usuario.get_diaSin(j)))
-            self.lista_tabaco.append(self.add_progreso(usuario.get_progreso(j)) )
+        
+            for j in range(self.num_usuarios):
+                print("Entro?")
+                self.lista_tabaco.append(self.add_dinAho(usuario.get_cigar(j),usuario.get_marca(j),usuario.get_tipo(j),usuario.get_diaSin(j)))
+                #print(usuario.get_progreso(j))
+                self.lista_tabaco.append(self.add_progreso(usuario.get_progreso(j)) )
 
-            self.set_numUsuarios(num_usu)
-            self.get_day(0)
-            self.get_dinAho(0)
-            self.get_Ncigar(0)
-            self.get_logs()
-            self.get_moneda()
-            self.to_s(0,usuario)
-            self.to_Simple(0,usuario)
-            self.get_progreso(0)
+                self.set_numUsuarios(num_usu)
+                self.get_day(0)
+                self.get_dinAho(0)
+                self.get_Ncigar(0)
+                self.get_logs()
+                self.get_moneda()
+                self.to_s(0,usuario)
+                self.to_Simple(0,usuario)
+                #self.get_progreso(0)
             return True
         #else:
         #    return False
 
-# if __name__ == "__main__":
-#     with open('../json/datos.json','r') as usuarios:
-#         lista_usuario = json.load(usuarios)
+if __name__ == "__main__":
+    with open('../json/datos.json','r') as usuarios:
+        lista_usuario = json.load(usuarios)
     
-#     usuario = Usuario()
-#     usuario.crea_usu(lista_usuario)
+    usuario = Usuario()
+    usuario.crea_usu(lista_usuario)
+    print(usuario.get_numUsuarios())
+    with open('../json/datos_tabaco.json','r') as marcas:
+        lista_tabaco = json.load(marcas)
 
-#     with open('../json/datos_tabaco.json','r') as marcas:
-#         lista_tabaco = json.load(marcas)
+    serv = Servicio()
+    serv.crea_sistema(usuario,usuario.get_numUsuarios(),lista_tabaco)
+    print(serv.get_dinAho(0))
 
-#     serv = Servicio()
-#     serv.crea_sistema(usuario,usuario.get_numUsuarios(),lista_tabaco)
-    
-#     for i in range(serv.get_numUsuarios()):
-#         print(serv.to_Simple(i,usuario))
+    for i in range(serv.get_numUsuarios()):
+        print(serv.to_Simple(i,usuario))

@@ -32,7 +32,7 @@ class TestMethods(unittest.TestCase):
 
    
     pruebaServicio = Servicio()
-    pruebaServicio.crea_sistema(pruebaUsuario,pruebaServicio.get_numUsuarios(),lista_tabaco)
+    pruebaServicio.crea_sistema(pruebaUsuario,pruebaUsuario.get_numUsuarios(),lista_tabaco)
 
     
     with open('../data.yaml') as f:
@@ -68,6 +68,9 @@ class TestMethods(unittest.TestCase):
     def test_to_s(self):
         self.assertEqual(self.pruebaServicio.to_s(0,self.pruebaUsuario)['Nombre'],'Usuario 1', "Usuario correcto")
     
+    def test_dinAho(self):
+        self.assertEqual(self.pruebaServicio.get_dinAho(0),43357.05, "Dinero ahorrado correcto")
+
     # def test_conex(self):
     #     self.assertEqual(self.conex.conexion(),True,"Conexión con éxito" ) 
     #     print("Conexión con éxito",self.conex.conexion())
