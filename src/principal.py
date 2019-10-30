@@ -192,12 +192,14 @@ class Servicio:
 
     """ Add progress """
     def add_progreso(self, string):
-        self.progres.append(string)
+        if(string < self.get_numUsuarios()):
+            self.progres.append(string)
 
     """ Devuelve el progreso """
 
     def get_progreso(self,string):
-        return self.progres[string]
+        if(string < self.get_numUsuarios()):
+            return self.progres[string]
 
     """ Cambia el número de usuarios """
     def set_numUsuarios(self,int):
@@ -270,18 +272,18 @@ class Servicio:
                 if(i['moneda'] != None):
                     self.set_moneda(i['moneda'])
    
-                for i in range(num_usu):
-                    self.lista_tabaco.append(self.add_dinAho(usuario.get_cigar(i),usuario.get_marca(i),usuario.get_tipo(i),usuario.get_diaSin(i)))
-                    self.lista_tabaco.append(self.add_progreso(usuario.get_progreso(i)) )
+                for j in range(num_usu):
+                    self.lista_tabaco.append(self.add_dinAho(usuario.get_cigar(j),usuario.get_marca(j),usuario.get_tipo(j),usuario.get_diaSin(j)))
+                    self.lista_tabaco.append(self.add_progreso(usuario.get_progreso(j)) )
 
-                self.set_numUsuarios(num_usu)
-                self.get_day(0)
-                self.get_dinAho(0)
-                self.get_Ncigar(0)
-                self.get_logs()
-                self.get_moneda()
-                self.to_s(0,usuario)
-                self.to_Simple(0,usuario)
+                    self.set_numUsuarios(num_usu)
+                    self.get_day(0)
+                    self.get_dinAho(0)
+                    self.get_Ncigar(0)
+                    self.get_logs()
+                    self.get_moneda()
+                    self.to_s(0,usuario)
+                    self.to_Simple(0,usuario)
             return True
         else:
             return False
