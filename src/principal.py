@@ -85,16 +85,16 @@ class Servicio:
     
     """ Devuelve el número de usuarios """
     def get_numUsuarios(self):
-        try:
-            return self.num_usuarios
+        #try:
+        return self.num_usuarios
         #except:
         #    return False
 
     """ Devuelve la moneda """
 
     def get_moneda(self):
-        try:
-            return self.moneda
+        #try:
+        return self.moneda
         #except:
         #    return False
 
