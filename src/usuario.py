@@ -231,12 +231,12 @@ class Usuario:
         var = {"Nombre": self.get_nombre(i),"Password": self.get_password(i),"Num. cigarillos": self.get_cigar(i),"Marca": self.get_marca(i),"Progreso": self.get_progreso(i)}
         return var
        
-if __name__ == "__main__":
-    with open('../json/datos.json','r') as usuarios:
-        lista_usuario = json.load(usuarios)
+# if __name__ == "__main__":
+#     with open('../json/datos.json','r') as usuarios:
+#         lista_usuario = json.load(usuarios)
     
-    usuario = Usuario()
-    usuario.crea_usu(lista_usuario)
+#     usuario = Usuario()
+#     usuario.crea_usu(lista_usuario)
 
         
-    print(usuario.get_progreso(0))
+#     print(usuario.get_progreso(0))

@@ -275,22 +275,29 @@ class Servicio:
                     self.lista_tabaco.append(self.add_progreso(usuario.get_progreso(i)) )
 
                 self.set_numUsuarios(num_usu)
+                self.get_day(0)
+                self.get_dinAho(0)
+                self.get_Ncigar(0)
+                self.get_logs()
+                self.get_moneda()
+                self.to_s(0,usuario)
+                self.to_Simple(0,usuario)
             return True
         else:
             return False
 
-if __name__ == "__main__":
-    with open('../json/datos.json','r') as usuarios:
-        lista_usuario = json.load(usuarios)
+# if __name__ == "__main__":
+#     with open('../json/datos.json','r') as usuarios:
+#         lista_usuario = json.load(usuarios)
     
-    usuario = Usuario()
-    usuario.crea_usu(lista_usuario)
+#     usuario = Usuario()
+#     usuario.crea_usu(lista_usuario)
 
-    with open('../json/datos_tabaco.json','r') as marcas:
-        lista_tabaco = json.load(marcas)
+#     with open('../json/datos_tabaco.json','r') as marcas:
+#         lista_tabaco = json.load(marcas)
 
-    serv = Servicio()
-    serv.crea_sistema(usuario,usuario.get_numUsuarios(),lista_tabaco)
+#     serv = Servicio()
+#     serv.crea_sistema(usuario,usuario.get_numUsuarios(),lista_tabaco)
     
-    for i in range(serv.get_numUsuarios()):
-        print(serv.to_Simple(i,usuario))
+#     for i in range(serv.get_numUsuarios()):
+#         print(serv.to_Simple(i,usuario))
