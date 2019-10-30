@@ -193,7 +193,6 @@ class Usuario:
         for i in dic:
             if(i['name'] != None):
                 self.lista_usuarios.append(self.add_nombre(i['name']))
-            
 
             if(i['password'] != None):
                 self.lista_usuarios.append(self.add_password(i['password']))
