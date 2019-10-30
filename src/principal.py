@@ -73,15 +73,15 @@ class Servicio:
     def get_Ncigar(self,string):
         try:
             return self.num_cigar[string]
-        except:
-            return False
+        #except:
+        #    return False
 
     """ Devuelve los logs de los usuarios """
     def get_logs(self):
         try:
             return self.logs
-        except:
-            return False
+        #except:
+        #    return False
     
     """ Devuelve el número de usuarios """
     def get_numUsuarios(self):
@@ -192,9 +192,7 @@ class Servicio:
 
     """ Add progress """
     def add_progreso(self, string):
-            print("add_progres?")
             self.progres.append(string)
-            print(self.progres[0])
 
     """ Devuelve el progreso """
 
