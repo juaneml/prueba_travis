@@ -1,10 +1,10 @@
 language: python
 
 python:
-  - "3.5"
- 
-virtualenv:
-  system_site_packages: true 
+  - "3.7"
+dist: xenial 
+#virtualenv:
+#  system_site_packages: true 
 node_js:
   - node
 
@@ -29,7 +29,7 @@ before_script:
 # command to install dependencies
 
 install:
-  - if [[ $TRAVIS_PYTHON_VERSION == 3.5 ]]; then pip install virtualenv==16.7.7; fi
+  - if [[ $TRAVIS_PYTHON_VERSION == 3.7 ]]; then pip install virtualenv==16.7.7; fi
   - pip3 install -r requirements.txt 
   - pip3 install codecov
   - pip3 install pytest-cov
