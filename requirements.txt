@@ -4,3 +4,4 @@ PyYAML==5.1.2
 psycopg2==2.8.3
 coverage==4.5.4
 coveralls
+pip==19

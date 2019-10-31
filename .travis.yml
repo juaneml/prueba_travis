@@ -29,7 +29,6 @@ before_script:
 # command to install dependencies
 
 install:
-  - pip3 install --upgrade pip3
   - pip3 install -r requirements.txt 
   - pip3 install codecov
   - pip3 install pytest-cov
