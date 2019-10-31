@@ -29,7 +29,7 @@ before_script:
 # command to install dependencies
 
 install:
-  - pip3 install --upgrade --user travis pip3 setuptools wheel virtualenv
+  - if [[ $TRAVIS_PYTHON_VERSION == 3.5 ]]; then pip install virtualenv==15.2.0; fi
   - pip3 install -r requirements.txt 
   - pip3 install codecov
   - pip3 install pytest-cov
