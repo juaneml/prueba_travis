@@ -274,9 +274,7 @@ class Servicio:
    
         
             for j in range(self.num_usuarios):
-                print("Entro?")
                 self.lista_tabaco.append(self.add_dinAho(usuario.get_cigar(j),usuario.get_marca(j),usuario.get_tipo(j),usuario.get_diaSin(j)))
-                #print(usuario.get_progreso(j))
                 self.lista_tabaco.append(self.add_progreso(usuario.get_progreso(j)) )
 
                 self.set_numUsuarios(num_usu)
