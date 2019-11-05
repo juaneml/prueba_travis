@@ -42,7 +42,7 @@ jobs:
             pip3 install python-coveralls
             pip3 install coveralls
         # run tests!  
-          command: cd ./test && py.test -vv test.py
+            cd ./test && py.test -vv test.py
       - save_cache:
           paths:
             - ./venv
