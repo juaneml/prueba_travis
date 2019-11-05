@@ -27,7 +27,7 @@ jobs:
             - v1-dependencies-
       - run:
           name: install dependencies
-          command: |	          command: |
+          command: |
             python3 -m venv venv
             . venv/bin/activate	
             sudo pip3 install pipenv
