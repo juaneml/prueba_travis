@@ -1,55 +1,56 @@
-# Python CircleCI 2.0 configuration file
-  jobs:	#
-    build:	# Check https://circleci.com/docs/2.0/language-python/ for more details
-      docker: 	#
-        - image: circleci/node:4.8.2 # the primary container, where your job's commands are run	version: 2
-      steps:	jobs:
-        - checkout # check out the code in the project directory	  build:
-        - run: echo "hello world" # run the `echo` command	    docker:
-      # specify the version you desire here
-      # use `-browsers` prefix for selenium tests, e.g. `3.6.1-browsers`
-      - image: circleci/python:3.6.1
-
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/postgres:9.4
-
-    working_directory: ~/prueba_travis
-    steps:
+#	#
+# Check https://circleci.com/docs/2.0/language-python/ for more details	# Check https://circleci.com/docs/2.0/language-python/ for more details
+#	#
+version: 2	version: 2
+jobs:	jobs:
+  build:	  build:
+    docker:	    docker:
+      # specify the version you desire here	      # specify the version you desire here
+      # use `-browsers` prefix for selenium tests, e.g. `3.6.1-browsers`	      # use `-browsers` prefix for selenium tests, e.g. `3.6.1-browsers`
+      - image: circleci/python:3.6.1	      - image: circleci/python:3.6.1
+      # Specify service dependencies here if necessary	      # Specify service dependencies here if necessary
+      # CircleCI maintains a library of pre-built images	      # CircleCI maintains a library of pre-built images
+      # documented at https://circleci.com/docs/2.0/circleci-images/	      # documented at https://circleci.com/docs/2.0/circleci-images/
+      # - image: circleci/postgres:9.4	      # - image: circleci/postgres:9.4
+    working_directory: ~/prueba_travis	    working_directory: ~/prueba_travis
+    steps:	    steps:
       - checkout
       - python/load-cache
-      - python/install-deps	          - python/install-deps
-      - python/save-cache	          - python/save-cache
-
-      # Download and cache dependencies
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "requirements.txt" }}
-            # fallback to using the latest cache if no exact match is found
-            - v1-dependencies-
-
-      - run:
-          name: install dependencies
-          command: |
-            python3 -m venv venv
-            . venv/bin/activate
-            pip install -r requirements.txt
-      - save_cache:
-          paths:
-            - ./venv
-          key: v1-dependencies-{{ checksum "requirements.txt" }}
-
-      # run tests!
-      # this example uses Django's built-in test-runner
-      # other common Python testing frameworks include pytest and nose
-      # https://pytest.org
-      # https://nose.readthedocs.io
-      - run:
-          name: run tests
-          command: |
-            . venv/bin/activate
-            cd ./test && pytest -s -v test.py
-      - store_artifacts:
-          path: test-reports
+      - python/install-deps	         
+      - python/save-cache	 
+      
+      # Download and cache dependencies	      # Download and cache dependencies
+      - restore_cache:	      - restore_cache:
+          keys:	          keys:
+            - v1-dependencies-{{ checksum "requirements.txt" }}	            - v1-dependencies-{{ checksum "requirements.txt" }}
+            # fallback to using the latest cache if no exact match is found	            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-	            - v1-dependencies-
+      - run:	      - run:
+          name: install dependencies	          name: install dependencies
+          command: |	          command: |
+            python3 -m venv venv	            python3 -m venv venv
+            . venv/bin/activate	            . venv/bin/activate
+            sudo pip3 install pipenv	            sudo pip3 install pipenv
+            pipenv install	            pipenv install
+            pip3 install -U pytest	            pip3 install -U pytest
+            pip3 install -r requirements.txt	            pip3 install -r requirements.txt
+            pip3 install codecov	            pip3 install codecov
+            pip3 install pytest-cov	            pip3 install pytest-cov
+            pip3 install pytest-circleci	            pip3 install pytest-circleci
+            pip3 install python-coveralls	            pip3 install python-coveralls
+            pip3 install coveralls	            pip3 install coveralls
+        
+           
+      - save_cache:	      - save_cache:
+          paths:	          paths:
+            - ./venv	            - ./venv
+          key: v1-dependencies-{{ checksum "requirements.txt" }}	          key: v1-dependencies-{{ checksum "requirements.txt" }}
+      	      
+      - run:	      #- run:
+          name: run tests	       #   name: run tests
+          	          
+          command: cd ./test && pipenv run python3 test.py 	  
+          
+      - store_artifacts:	      - store_artifacts:
+          path: test-reports	          path: test-reports
           destination: test-reports
