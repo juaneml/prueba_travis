@@ -47,7 +47,7 @@ jobs:
       # run tests!
       - run:
           name: run tests
-          command: cd ./test && python3 -m pytest -s -v test.py 
+          command: cd ./test && python3 -m py.test -s -v test.py 
 
       - store_artifacts:
           path: test-reports
