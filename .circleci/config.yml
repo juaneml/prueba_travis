@@ -1,56 +1,56 @@
 #	#
 # Check https://circleci.com/docs/2.0/language-python/ 
 #	#
-version: 2	
-jobs:	jobs:
-  build:	  
+version: 2
+jobs:
+  build:
     docker:	    
       # specify the version you desire here	      
       # use `-browsers` prefix for selenium tests, e.g. `3.6.1-browsers`	     
-      - image: circleci/python:3.6.1	     
+      - image: circleci/python:3.6.1
       # Specify service dependencies here if necessary	      
       # CircleCI maintains a library of pre-built images	      
       # documented at https://circleci.com/docs/2.0/circleci-images/	      
-      # - image: circleci/postgres:9.4	     
-    working_directory: ~/prueba_travis	    
-    steps:	    
+      # - image: circleci/postgres:9.4
+    working_directory: ~/prueba_travis
+    steps:
       - checkout
       - python/load-cache
-      - python/install-deps	         
-      - python/save-cache	 
+      - python/install-deps
+      - python/save-cache
       
-      # Download and cache dependencies	     
-      - restore_cache:	     
-          keys:	        
-            - v1-dependencies-{{ checksum "requirements.txt" }}	           
-            # fallback to using the latest cache if no exact match is found	           
-            - v1-dependencies-	            
-      - run:	      
-          name: install dependencies	       
+      # Download and cache dependencies	
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "requirements.txt" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
+      - run:
+          name: install dependencies
           command: |	          command: |
-            python3 -m venv venv	           
-            . venv/bin/activate	          
-            sudo pip3 install pipenv	            
-            pipenv install	            
-            pip3 install -U pytest	            
-            pip3 install -r requirements.txt	            
-            pip3 install codecov	            
-            pip3 install pytest-cov	            
-            pip3 install pytest-circleci	            
-            pip3 install python-coveralls	            
-            pip3 install coveralls	            
+            python3 -m venv venv
+            . venv/bin/activate	
+            sudo pip3 install pipenv
+            pipenv install
+            pip3 install -U pytest
+            pip3 install -r requirements.txt
+            pip3 install codecov
+            pip3 install pytest-cov
+            pip3 install pytest-circleci
+            pip3 install python-coveralls
+            pip3 install coveralls
         
            
-      - save_cache:	      - save_cache:
-          paths:	          paths:
-            - ./venv	            - ./venv
-          key: v1-dependencies-{{ checksum "requirements.txt" }}	        
-      	      
-      - run:	      
-          name: run tests	       
-          	          
-          command: cd ./test && pipenv run python3 test.py 	  
+      - save_cache:
+          paths:
+            - ./venv
+          key: v1-dependencies-{{ checksum "requirements.txt" }}
+      
+      - run:
+          name: run tests
           
-      - store_artifacts:	      
-          path: test-reports	          
+          command: cd ./test && pipenv run python3 test.py
+   
+      - store_artifacts:
+          path: test-reports
           destination: test-reports
