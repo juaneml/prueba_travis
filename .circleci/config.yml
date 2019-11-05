@@ -32,6 +32,9 @@ jobs:
           command: |
             python3 -m venv venv
             . venv/bin/activate
+            sudo pip3 install pipenv
+            pipenv install
+
             pip3 install -r requirements.txt
             pip3 install codecov
             pip3 install pytest-cov
@@ -47,7 +50,7 @@ jobs:
       # run tests!
       - run:
           name: run tests
-          command: cd ./test && py.test -s -v test.py 
+          command: cd ./test && pipenv run python3 test.py 
 
       - store_artifacts:
           path: test-reports
