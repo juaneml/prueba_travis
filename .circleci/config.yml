@@ -16,17 +16,21 @@ jobs:
       # - image: circleci/postgres:9.4
 
     working_directory: ~/prueba_travis
-
-    steps:
-      - checkout
-      - python/load-cache
-      - python/install-deps
-      - python/save-cache
-      - run:
+    usage:
+      jobs:
+        build:
+          executor: python/default
+          steps:
+    
+          - checkout
+          - python/load-cache
+          - python/install-deps
+          - python/save-cache
+          - run:
            command: |
               # pytest would be a dep in requirements.txt
                pytest
-            name: Test
+           name: Test
       
 
       # Download and cache dependencies
