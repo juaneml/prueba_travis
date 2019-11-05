@@ -47,7 +47,7 @@ jobs:
       - run:
           name: run tests
           
-          command: cd ./test && pipenv run python3 test.py
+          command: cd ./test && pytest -s -v test.py test.py
    
       - store_artifacts:
           path: test-reports
