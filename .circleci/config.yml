@@ -1,21 +1,57 @@
-# Python CircleCI 2.0 configuration file
-#
-# Check https://circleci.com/docs/2.0/language-python/ for more details
-#
-version: 2
-jobs:
-  build:
-    docker:
-      # specify the version you desire here
-      # use `-browsers` prefix for selenium tests, e.g. `3.6.1-browsers`
-      - image: circleci/python:3.6.1
-
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/postgres:9.4
-
-    working_directory: ~/prueba_travis
+# This code is licensed from CircleCI to the user under the MIT license. See
+# https://circleci.com/orbs/registry/licensing for details.
+commands:
+  install-deps:
+    description: Install packages from requirements.txt via Pip.
+    parameters:
+      local:
+        default: true
+        description: Install packages for local user, not globally. Defaults to true.
+        type: boolean
+    steps:
+    - run:
+        command: |
+          if << parameters.local >>; then
+            pip install --user -r requirements.txt
+          else
+            pip install -r requirements.txt
+          fi
+        name: Install Dependencies
+  load-cache:
+    description: Load cached Pip packages.
+    parameters:
+      key:
+        default: pip
+        description: The cache key to use. The key is immutable.
+        type: string
+    steps:
+    - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "requirements.txt" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
+  save-cache:
+    description: Save Pip packages to cache.
+    parameters:
+      key:
+        default: pip
+        description: The cache key to use. The key is immutable.
+        type: string
+    steps:
+    - save_cache:
+        - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "requirements.txt" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
+        paths:
+        - /home/circleci/.local/lib/
+description: Common CircleCI tasks for the Python programming language.
+examples:
+  working_directory: ~/prueba_travis
+    description: |
+     working with the Pip cache on CircleCI to speed up builds.
+      
     usage:
       jobs:
         build:
@@ -28,44 +64,23 @@ jobs:
           - run:
               command: |
                 # pytest would be a dep in requirements.txt
-                pytest
+                cd ./test && pytest -s -v test.py 
               name: Test
-      
-
-      # Download and cache dependencies
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "requirements.txt" }}
-            # fallback to using the latest cache if no exact match is found
-            - v1-dependencies-
-
-      - run:
-          name: install dependencies
-          command: |
-            python3 -m venv venv
-            . venv/bin/activate
-            sudo pip3 install pipenv
-            pipenv install
-            pip3 install -U pytest
-            pip3 install -r requirements.txt
-            pip3 install codecov
-            pip3 install pytest-cov
-            pip3 install pytest-circleci
-            pip3 install python-coveralls
-            pip3 install coveralls
-        # run tests!  
-            
-      - save_cache:
-          paths:
-            - ./venv
-          key: v1-dependencies-{{ checksum "requirements.txt" }}
-
-      
-      - run:
-          name: run tests
-          
-          command: cd ./test && pytest -s -v test.py 
-
-      - store_artifacts:
-          path: test-reports
-          destination: test-reports
+      orbs:
+        python: circleci/python@0.1
+      version: 2.1
+      workflows:
+        main:
+          jobs:
+          - build
+executors:
+  default:
+    description: The official CircleCI Python Docker image.
+    docker:
+    - image: circleci/python:3.6.1
+    parameters:
+      tag:
+        default: latest
+        description: The `circleci/python` Docker image version tag.
+        type: string
+version: 2.1
