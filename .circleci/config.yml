@@ -19,6 +19,15 @@ jobs:
 
     steps:
       - checkout
+      - python/load-cache
+      - python/install-deps
+      - python/save-cache
+      - run:
+           command: |
+              # pytest would be a dep in requirements.txt
+               pytest
+            name: Test
+      
 
       # Download and cache dependencies
       - restore_cache:
@@ -42,17 +51,17 @@ jobs:
             pip3 install python-coveralls
             pip3 install coveralls
         # run tests!  
-            cd ./test && py.test -vv test.py
+            
       - save_cache:
           paths:
             - ./venv
           key: v1-dependencies-{{ checksum "requirements.txt" }}
 
       
-      #- run:
-       #   name: run tests
+      - run:
+          name: run tests
           
-          #cd ./test && pipenv run python3 test.py 
+          command: cd ./test && pytest -s -v test.py 
 
       - store_artifacts:
           path: test-reports
