@@ -43,11 +43,11 @@ install:
   
 
 script:
-  - coverage run --source ./prueba_travis/src principal.py 
-  - coverage run --source ./prueba_travis/src usuario.py
-  - coverage run --source ./prueba_travis/src proyecto-dep.py
+  - coverage run --source ./src principal.py 
+  - coverage run --source ./src usuario.py
+  - coverage run --source ./src proyecto-dep.py
   - cd ./test && pytest -s -v test.py 
-  - coverage run --source ./prueba_travis/test test.py
+  - coverage run --source ./test test.py
   
   - coverage report -m
   - coverage xml
