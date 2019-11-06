@@ -29,7 +29,8 @@ before_script:
 # command to install dependencies
 
 install:
-
+  - pip3 install pipenv
+  - pip install pipenv
   - pip install -U pip
   - pip3 install 'setuptools>33,<34'
   - pip list --format=columns
