@@ -30,7 +30,7 @@ before_script:
 
 install:
 
-  - pip3 install -U pip3
+  - pip install -U pip
   - pip3 install 'setuptools>33,<34'
   - pip install -r tasks-requirements.txt
   - inv --list
