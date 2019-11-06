@@ -48,7 +48,7 @@ script:
   #- coverage run --source ./src usuario.py
   #- coverage run --source ./src proyecto-dep.py
   - cd ./test && pytest -s -v test.py 
-  - coverage run --source  test.py
+  - coverage run --source ./test test.py
   
   - coverage report -m
   - coverage xml
