@@ -25,10 +25,6 @@ before_script:
   - psql -d 'travis_ci_test' -c "INSERT INTO usuarios(name, pw, progres, marca, tipo, cigar) VALUES ('Usuario 1',md5('abc123'),'1995-11-06T23:20:50', 'MarcaA', 'Industrial', 22);" -b -U postgres
   - psql -d 'travis_ci_test' -c "select * from usuarios;" -U postgres
 
-  - wget -q -O - https://pkg.jenkins.io/debian/jenkins.io.key | sudo apt-key add -
-  - sh -c 'echo deb https://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
-  - apt-get update
-  - apt-get install jenkins
   
 # command to install dependencies
 
