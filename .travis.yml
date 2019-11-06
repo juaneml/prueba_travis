@@ -1,8 +1,8 @@
 language: python
 
 python:
-  - "3.6"
-dist: "trusty"
+  - "3.7"
+#dist: "trusty"
 #virtualenv:
 #  system_site_packages: true 
 node_js:
@@ -33,7 +33,7 @@ install:
   - pip install -U pip
   - pip3 install 'setuptools>33,<34'
   - pip list --format=columns
-  - if [[ $TRAVIS_PYTHON_VERSION == 3.6 ]]; then pip install virtualenv==16.7.7; fi
+  - if [[ $TRAVIS_PYTHON_VERSION == 3.7 ]]; then pip install virtualenv==16.7.7; fi
   - pip3 install -r requirements.txt 
   - pip3 install codecov
   - pip3 install pytest-cov
