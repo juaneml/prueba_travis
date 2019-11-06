@@ -44,10 +44,10 @@ install:
 
 script:
   - cd ./test && pytest -s -v test.py 
-  - coverage run --source ~/prueba_travis/test/ test.py
-  - coverage run --source ~/prueba_travis/src/ principal.py 
-  - coverage run --source ~/prueba_travis/src/ usuario.py
-  - coverage run --source ~/prueba_travis/src/ proyecto-dep.py
+  - coverage run --source ./prueba_travis/test test.py
+  - coverage run --source ./prueba_travis/src principal.py 
+  - coverage run --source ./prueba_travis/src usuario.py
+  - coverage run --source ./prueba_travis/src proyecto-dep.py
   - coverage report -m
   - coverage xml
   #- py.test coveralls/tests.py --doctest-modules --pep8 coveralls -v --cov coveralls --cov-report term-missing
