@@ -32,9 +32,7 @@ install:
 
   - pip install -U pip
   - pip3 install 'setuptools>33,<34'
-  - pip install -r tasks-requirements.txt
   - inv --list
-  - pip3 install -r dev-requirements.txt
   - pip list --format=columns
   - if [[ $TRAVIS_PYTHON_VERSION == 3.7 ]]; then pip install virtualenv==16.7.7; fi
   - alt_env/bin/pip install wheel
