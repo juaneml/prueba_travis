@@ -29,22 +29,43 @@ before_script:
 # command to install dependencies
 
 install:
+
+  - pip3 install -U pip3
+  - pip3 install 'setuptools>33,<34'
+  - pip install -r tasks-requirements.txt
+  - inv --list
+  - pip3 install -r dev-requirements.txt
+  - pip list --format=columns
   - if [[ $TRAVIS_PYTHON_VERSION == 3.7 ]]; then pip install virtualenv==16.7.7; fi
+  - alt_env/bin/pip install wheel
   - pip3 install -r requirements.txt 
   - pip3 install codecov
   - pip3 install pytest-cov
   - pip3 install python-coveralls
   - pip3 install coveralls
-script: 
+  
+before_script:
+  # Create 'sudouser' w/ sudo password & perms on Travis' homedir
+  - inv travis.make-sudouser
+script:
+ # Execute full test suite + coverage, as the new sudo-capable user
+  - inv travis.sudo-coverage
+  # Websites build OK? (Not on PyPy3, Sphinx is all "who the hell are you?" =/
+  - "if [[ $TRAVIS_PYTHON_VERSION != 'pypy3' ]]; then inv sites; fi"
+  # Doctests in websites OK? (Same caveat as above...)
+  - "if [[ $TRAVIS_PYTHON_VERSION != 'pypy3' ]]; then inv www.doctest; fi"
+  # Did we break setup.py?
+  - inv travis.test-installation --package=invoke --sanity="inv --list"
+  # Test distribution builds, including some package_data based stuff
+  # (completion script printing)
+  - "inv travis.test-packaging --package=invoke --sanity='inv --list && inv --print-completion-script zsh' --alt-python=alt_env/bin/python"
   - cd ./test && pytest -s -v test.py 
   - coverage run test.py
   - coverage report -m
   - coverage xml
   #- py.test coveralls/tests.py --doctest-modules --pep8 coveralls -v --cov coveralls --cov-report term-missing
   
-  
-
-  
+   
 after_success:
   - bash <(curl -s https://codecov.io/bash) -t d083f686-8673-49f1-8b91-24afe8872f17 -f coverage.xml
   - coveralls
