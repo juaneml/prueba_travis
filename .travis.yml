@@ -3,8 +3,8 @@ language: python
 python:
   - "3.6"
 dist: "trusty"
-virtualenv:
-  system_site_packages: true 
+#virtualenv:
+#  system_site_packages: true 
 node_js:
   - node
 
