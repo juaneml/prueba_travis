@@ -25,10 +25,10 @@ before_script:
   - psql -d 'travis_ci_test' -c "INSERT INTO usuarios(name, pw, progres, marca, tipo, cigar) VALUES ('Usuario 1',md5('abc123'),'1995-11-06T23:20:50', 'MarcaA', 'Industrial', 22);" -b -U postgres
   - psql -d 'travis_ci_test' -c "select * from usuarios;" -U postgres
 
-  - wget -q -O - https://pkg.jenkins.io/debian/jenkins.io.key | sudo apt-key add -
-  - sudo sh -c 'echo deb https://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
-  - sudo apt-get update
-  - sudo apt-get install jenkins
+  # - wget -q -O - https://pkg.jenkins.io/debian/jenkins.io.key | sudo apt-key add -
+  # - sudo sh -c 'echo deb https://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
+  # - sudo apt-get update
+  # - sudo apt-get install jenkins
   
 # command to install dependencies
 
@@ -61,4 +61,5 @@ script:
 after_success:
   - bash <(curl -s https://codecov.io/bash) -t d083f686-8673-49f1-8b91-24afe8872f17 -f coverage.xml
   - coveralls
-  
+  - bash<(curl -u username:password http://localhost:8080/job/IV_1920_Proyecto/job/master/10/execution/node/24/wfapi/log)
+
