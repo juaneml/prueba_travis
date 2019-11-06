@@ -29,18 +29,18 @@ before_script:
 # command to install dependencies
 
 install:
-  - pip3 install pipenv
-  - pip install pipenv
-  - pip install -U pip
+  #- pip3 install pipenv
+  #- pip install pipenv
+  #- pip install -U pip
   - pip3 install 'setuptools>33,<34'
   - pip list --format=columns
   - if [[ $TRAVIS_PYTHON_VERSION == 3.7 ]]; then pip install virtualenv==16.7.7; fi
   - pip3 install -r requirements.txt 
-  - pip3 install codecov
-  - pip3 install pytest-cov
-  - pip3 install python-coveralls
-  - pip3 install coveralls
-  - pip3 install python-jenkins
+  #- pip3 install codecov
+  #- pip3 install pytest-cov
+  #- pip3 install python-coveralls
+  #- pip3 install coveralls
+  #- pip3 install python-jenkins
   
 
 script:
