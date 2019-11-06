@@ -2,14 +2,25 @@ language: python
 python:
   - "3.5"
 install:
-  - pip install -e . --use-mirrors
-before_script:
-  - pip install -r requirements.txt --use-mirrors
-  - git clone https://github.com/juaneml/prueba_travis.git
-  - cd prueba_travis
-  - py.test example/tests.py --cov=example
-  - cd -
+
+  - pip install -U pip
+  - pip3 install 'setuptools>33,<34'
+  - pip list --format=columns
+  - if [[ $TRAVIS_PYTHON_VERSION == 3.7 ]]; then pip install virtualenv==16.7.7; fi
+  - pip3 install -r requirements.txt 
+  - pip3 install codecov
+  - pip3 install pytest-cov
+  - pip3 install python-coveralls
+  - pip3 install coveralls
+  
+
+script:
+  # - cd ./test && pytest -s -v test.py 
+  - coverage run test.py
+  - coverage report -m
+  - coverage xml
 script:
   - cd ./test && pytest -v -s test.py --doctest-modules --juaneml coveralls -v --cov coveralls --cov-report term-missing
 after_success:
   - coveralls
+
