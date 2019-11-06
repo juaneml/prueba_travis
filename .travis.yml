@@ -40,21 +40,8 @@ install:
   - pip3 install python-coveralls
   - pip3 install coveralls
   
-before_script:
-  # Create 'sudouser' w/ sudo password & perms on Travis' homedir
-  - inv travis.make-sudouser
+
 script:
- # Execute full test suite + coverage, as the new sudo-capable user
-  - inv travis.sudo-coverage
-  # Websites build OK? (Not on PyPy3, Sphinx is all "who the hell are you?" =/
-  - "if [[ $TRAVIS_PYTHON_VERSION != 'pypy3' ]]; then inv sites; fi"
-  # Doctests in websites OK? (Same caveat as above...)
-  - "if [[ $TRAVIS_PYTHON_VERSION != 'pypy3' ]]; then inv www.doctest; fi"
-  # Did we break setup.py?
-  - inv travis.test-installation --package=invoke --sanity="inv --list"
-  # Test distribution builds, including some package_data based stuff
-  # (completion script printing)
-  - "inv travis.test-packaging --package=invoke --sanity='inv --list && inv --print-completion-script zsh' --alt-python=alt_env/bin/python"
   - cd ./test && pytest -s -v test.py 
   - coverage run test.py
   - coverage report -m
