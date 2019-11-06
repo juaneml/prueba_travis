@@ -43,7 +43,7 @@ install:
 
 script:
   - cd ./test && pytest -s -v test.py 
-  - coverage run test.py
+  - coverage run --source test.py
   - coverage report -m
   - coverage xml
   #- py.test coveralls/tests.py --doctest-modules --pep8 coveralls -v --cov coveralls --cov-report term-missing
