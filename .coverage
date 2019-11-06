@@ -18,7 +18,7 @@ install:
 
 script:
   # - cd ./test && pytest -s -v test.py 
-  - coverage run --source test.py
+  - coverage run test.py
   - coverage report -m
   - coverage xml
 script:
