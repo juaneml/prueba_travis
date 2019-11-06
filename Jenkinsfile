@@ -19,7 +19,7 @@ pipeline {
         stage('script'){
             steps{
                 sh '''
-                    pytest -v test.py
+                    cd ./test && pytest -v test.py
                 '''
             }
         }
