@@ -1,8 +1,8 @@
 language: python
 python:
-  - "3.5"
-  virtualenv:
-  system_site_packages: true 
+  - "3.7"
+  #virtualenv:
+  #system_site_packages: true 
 install:
 
   - pip install -U pip
