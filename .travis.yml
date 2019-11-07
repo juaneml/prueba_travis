@@ -15,8 +15,7 @@ before_script:
  
 # command to run tests
 script: 
-  - make test
-  - make coverage
+  - make -B test
   - make ini_ap
   - make status
   - make stop_app
