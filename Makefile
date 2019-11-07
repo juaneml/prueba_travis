@@ -16,7 +16,8 @@ codecov:
 	bash <(curl -s https://codecov.io/bash) -t d0ba6a02-f9f7-44ab-b128-a82396d54280 -f coverage.xml
 
 ini_ap:
-	cd ./src/ && pm2 start  'gunicorn proyecto-dep-app:__hug_wsgi__ -b 0.0.0.0:8000 -w 2' --name proyecto
+	cd ./src && pm2 stat 'gunicorn proyecto-dep-app:__hug_wsgi__' --name proyecto
+	#cd ./src/ && pm2 start  'gunicorn proyecto-dep-app:__hug_wsgi__ -b 0.0.0.0:8000 -w 2' --name proyecto
 	#pm2 start  'gunicorn proyecto-dep-app: -b 0.0.0.0:8000 -w 3' --name proyecto
 status:
 	echo "status proyecto"
