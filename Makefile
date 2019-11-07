@@ -1,11 +1,10 @@
 dependences:
-			echo "Makefile microservicio\n"
-			echo "language: python version 3.7 \n"
-			echo "install dependences"
-			npm install pm2 -g
-			pip3 install -r requirements.txt
+	echo "Makefile microservicio\n"
+	echo "language: python version 3.7 \n"
+	echo "install dependences"
+	npm install pm2 -g
+	pip3 install -r requirements.txt
 	
-
 test: 
 	echo "run tests"
 	cd ./test && pytest -v test.py
@@ -18,8 +17,6 @@ codecov:
 ini_ap:
 	echo "ini app"
 	cd ./src/ && pm2 start  'gunicorn proyecto-dep-app:__hug_wsgi__ -b 0.0.0.0:8000' --name proyecto
-
-
 
 status:
 	echo "status proyecto"
