@@ -16,11 +16,11 @@ before_script:
  
 # command to run tests
 script: 
-  - make -B test
   - make ini_ap
   - make status
   - make stop_app
   - make delete_app
+  - make -B test
 
 after_success:
   - make codecov
