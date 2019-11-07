@@ -16,7 +16,7 @@ codecov:
 
 ini_ap:
 	echo "ini app"
-	cd ./src/ && pm2 start  'gunicorn proyecto-dep-app:__hug_wsgi__ -b 0.0.0.0:8000' --name proyecto
+	cd ./src/ && pm2 start  'gunicorn proyecto-dep-app:__hug_wsgi__ -b 0.0.0.0:8000 -w 3' --name proyecto
 
 status:
 	echo "status proyecto"
