@@ -289,20 +289,3 @@ class Servicio:
             return True
         #else:
         #    return False
-
-# if __name__ == "__main__":
-#     with open('../json/datos.json','r') as usuarios:
-#         lista_usuario = json.load(usuarios)
-    
-#     usuario = Usuario()
-#     usuario.crea_usu(lista_usuario)
-#     print(usuario.get_numUsuarios())
-#     with open('../json/datos_tabaco.json','r') as marcas:
-#         lista_tabaco = json.load(marcas)
-
-#     serv = Servicio()
-#     serv.crea_sistema(usuario,usuario.get_numUsuarios(),lista_tabaco)
-#     print(serv.get_dinAho(0))
-
-#     for i in range(serv.get_numUsuarios()):
-#         print(serv.to_Simple(i,usuario))
