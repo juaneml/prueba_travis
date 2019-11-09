@@ -19,10 +19,10 @@ script:
   - make ini_ap
   - make status
   - make -B test
-  - make stop_app
-  - make delete_app
+  
   
 
 after_success:
+  - make stop_app
+  - make delete_app
   - make codecov
-  
