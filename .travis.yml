@@ -18,9 +18,10 @@ before_script:
 script: 
   - make ini_ap
   - make status
+  - make -B test
   - make stop_app
   - make delete_app
-  - make -B test
+  
 
 after_success:
   - make codecov

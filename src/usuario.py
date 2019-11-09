@@ -156,6 +156,13 @@ class Usuario:
         #else:
         #    return False
 
+    def get_listaUsuarios(self):
+        print(self.get_numUsuarios())
+        salida = []
+
+        for i in range(self.get_numUsuarios()):
+            salida.append(self.to_s(i))
+        return salida
     """ Cambia el nombre """
     #def set_nombre(self,usu,string):
     #    self.nombre[usu] = string

@@ -19,8 +19,8 @@ with open('../json/datos.json','r') as usuarios:
     usuario = Usuario()
     usuario.crea_usu(lista_usuarios)
 
-    for i in range(usuario.get_numUsuarios()):
-       lista_usuarios.append(usuario.to_s(i))
+    #for i in range(usuario.get_numUsuarios()):
+       #lista_usuarios.append(usuario.to_s(i))
 
 with open('../json/datos_tabaco.json','r') as marcas:
     lista_tabaco = json.load(marcas)
@@ -28,8 +28,8 @@ with open('../json/datos_tabaco.json','r') as marcas:
     serv = Servicio() 
     serv.crea_sistema(usuario,usuario.get_numUsuarios(),lista_tabaco)
 
-    for i in range(serv.get_numUsuarios()):
-       lista_tabaco.append(serv.to_Simple(i,usuario))
+    # for i in range(serv.get_numUsuarios()):
+    #    lista_tabaco.append(serv.to_Simple(i,usuario))
     
 
 @hug.cli()
@@ -56,7 +56,8 @@ def status():
 @hug.get('/lista_usuarios')
 def lista_usus():
     
-    salida = lista_usuarios
+    salida = usuario.get_listaUsuarios()
+
     return str(salida)
 
 @hug.get('/datos_calculados')
