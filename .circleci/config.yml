@@ -31,8 +31,8 @@ jobs:
       - run:
           name: pip 3
           command: sudo apt-get update
-      -run: sudo apt-get -y install python3-pip
-      
+      - run: sudo apt-get -y install python3-pip
+
       - run:
           name: install curl
           command: sudo apt-get install curl
