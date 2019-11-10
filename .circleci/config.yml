@@ -31,13 +31,7 @@ jobs:
       - checkout
 
       - run: sudo apt-get update
-      - run:
-          name: Instalar dependencias
-          command: |
-            python3 -m venv venv
-            pip install --user pytest
-            . venv/bin/activate
-            
+      
       - run: 
           name: install python 3
           command: sudo apt-get install software-properties-common
@@ -46,6 +40,12 @@ jobs:
       - run: sudo apt-get update
       - run: sudo apt install python3.7
 
+      - run:
+          name: Instalar dependencias
+          command: |
+            python3 -m venv venv
+            pip install --user pytest
+            . venv/bin/activate
       
       - run:
           name: install curl
