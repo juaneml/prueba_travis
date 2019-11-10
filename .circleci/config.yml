@@ -26,11 +26,11 @@ jobs:
             
             make dependences
             
-      -run:
+      - run:
           name: install npm
           command: npm install npm@latest -g
 
-      -run:
+      - run:
           name: isntall pm2
           command: npm install pm2 -g
             # sudo pip3 install pipenv
