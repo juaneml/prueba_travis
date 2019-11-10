@@ -20,6 +20,10 @@ jobs:
       - checkout
       - run: sudo apt-get update
 
+      - run: 
+          name: install python 3
+          command: sudo apt-get install python3.7
+
       - run:
           name: install curl
           command: sudo apt-get install curl
