@@ -19,7 +19,8 @@ jobs:
       - run: sudo chown -R circleci:circleci /usr/local/bin
       - run: sudo chown -R circleci:circleci /usr/local/lib/python3.7/site-packages
       - run: sudo npm install npm@latest -g
-      - run: name: update-npm
+      - run: 
+          name: update-npm
           command: 'sudo npm install npm@latest -g'
       - run: npm install
       - run: npm install pm2 -g
