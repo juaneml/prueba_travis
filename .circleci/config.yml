@@ -20,13 +20,10 @@ jobs:
       - checkout
       - run: 
           name: update-npm
-          command: 'sudo npm install -g npm@latest '
+          command: sudo apt-get install npm
       - restore_cache:
           key: dependency-cache-{{ checksum "package-lock.json" }}
-      - run: 
-          name: install-npm-wee
-          command: npm install  
-
+      
       - run: npm install pm2 -g
 
       - run: sudo chown -R circleci:circleci /usr/local/bin
