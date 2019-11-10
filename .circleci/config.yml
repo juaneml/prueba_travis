@@ -23,12 +23,6 @@ jobs:
     working_directory: ~/prueba_travis
     steps:
       - checkout
-      - run:
-          name: "Set Python version"
-          command: pyenv global 3.7.0
-      - run:
-          name: "Do things!"
-          command: python run.py
 
       - run: sudo apt-get update
 
