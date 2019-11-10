@@ -19,8 +19,13 @@ jobs:
     steps:
       - checkout
       - run:
+        name: install curl
+        command: sudo apt install curl
+      - run: 
+        name: install dependences node
         command: curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
-        sudo apt-get install -y nodejs
+        
+      - run: sudo apt-get install -y nodejs
       - run: 
           name: update-npm
           command: sudo apt-get install -y build-essential
