@@ -19,11 +19,11 @@ jobs:
     steps:
       - checkout
       - run:
-        name: install curl
-        command: sudo apt-get install curl
+          name: install curl
+          command: sudo apt-get install curl
       - run: 
-        name: install dependences node
-        command: curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+          name: install dependences node
+          command: curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
         
       - run: sudo apt-get install -y nodejs
       - run: 
