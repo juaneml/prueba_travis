@@ -7,7 +7,7 @@ jobs:
     docker:
       # specify the version you desire here
       # use `-browsers` prefix for selenium tests, e.g. `3.6.1-browsers`
-      - image: circleci/python:3.6.1
+      - image: circleci/python:3.7
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
@@ -16,14 +16,14 @@ jobs:
     steps:
       - checkout
       - run: sudo chown -R circleci:circleci /usr/local/bin
-      - run: sudo chown -R circleci:circleci /usr/local/lib/python3.6/site-packages
+      - run: sudo chown -R circleci:circleci /usr/local/lib/python3.7/site-packages
       
       - run:
           name: install dependencies
           command: |
             python3 -m venv venv
-            . venv/bin/activate	
-          comand:  make dependences
+            . venv/bin/activate
+            make dependences
             # sudo pip3 install pipenv
             # sudo pipenv install
             # sudo pip3 install -U pytest
@@ -35,14 +35,6 @@ jobs:
             # sudo pip3 install python-coveralls
             # sudo pip3 install coveralls
         
-           
-      - save_cache: # cache Python dependencies using checksum of Pipfile as the cache-key
-          key: deps9-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
-          paths:
-            - ".venv"
-            - "/usr/local/bin"
-            - "/usr/local/lib/python3.6/site-packages"
-      
       - run:
           name: init app
           command: make ini_ap
@@ -53,7 +45,24 @@ jobs:
       
       - run:
           name: tests
-          comand: make -B test
+          command: make -B test     
+      
+      - run:
+          name: stop app
+          command: make stop_app
+
+      - run:
+          name: delete app
+          command: make delete_app
+  
+      - save_cache: # cache Python dependencies using checksum of Pipfile as the cache-key
+          key: deps9-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
+          paths:
+            - ".venv"
+            - "/usr/local/bin"
+            - "/usr/local/lib/python3.6/site-packages"
+      
+      
       
    
       - store_artifacts:
