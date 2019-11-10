@@ -11,6 +11,8 @@ jobs:
       dependencies:
         - pip install --upgrade pip
         - pip install --upgrade
+        - pip install circleci
+        - sudo apt-get -y install python3-pip
     #docker:
       # specify the version you desire here
       # use `-browsers` prefix for selenium tests, e.g. `3.6.1-browsers`
