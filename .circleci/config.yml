@@ -52,7 +52,7 @@ jobs:
           command: make status
       
       - run:
-          name: run tests
+          name: tests
           comand: make -B test
       
    
