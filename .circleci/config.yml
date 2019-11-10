@@ -16,14 +16,23 @@ jobs:
     working_directory: ~/prueba_travis
     steps:
       - checkout
+      - run: 
+          name: update-npm
+          command: 'sudo npm install -g npm@latest '
+      -restore_cache:
+          key: dependency-cache-{{ checksum "package-lock.json" }}
+      - run: 
+          name: install-npm-wee
+          command: npm install  
+          
+      - run: npm install pm2 -g
+
       - run: sudo chown -R circleci:circleci /usr/local/bin
       - run: sudo chown -R circleci:circleci /usr/local/lib/python3.7/site-packages
       - run: sudo npm install npm@latest -g
-      - run: 
-          name: update-npm
-          command: 'sudo npm install npm@latest -g'
-      - run: npm install
-      - run: npm install pm2 -g
+      
+      
+      
       - run:
           name: install dependencies
           command: |
