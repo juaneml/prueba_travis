@@ -6,6 +6,11 @@ jobs:
   build:
     machine:
       image: ubuntu-1604:201903-01
+      python:
+        version: 3.7
+      dependencies:
+        - pip install --upgrade pip
+        - pip install --upgrade
     #docker:
       # specify the version you desire here
       # use `-browsers` prefix for selenium tests, e.g. `3.6.1-browsers`
@@ -24,7 +29,7 @@ jobs:
       - run:
           name: "Do things!"
           command: python run.py
-          
+
       - run: sudo apt-get update
 
       - run: 
