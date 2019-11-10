@@ -43,7 +43,7 @@ jobs:
       - restore_cache:
           key: dependency-cache-{{ checksum "package-lock.json" }}
 
-      - run: sudo npm install npm@latest -g
+      - run: sudo npm install npm -g
       - run: npm install pm2 -g
 
       #- run: sudo chown -R circleci:circleci /usr/local/bin
