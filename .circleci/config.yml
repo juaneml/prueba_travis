@@ -54,11 +54,11 @@ jobs:
       
       - run:
           name: install dependencies
-          command: |
-            python3 -m venv venv
-            . venv/bin/activate
+          command: make dependences
+            #|
+            #python3 -m venv venv
+            #. venv/bin/activate
             
-            make dependences
             
      
       - run:
