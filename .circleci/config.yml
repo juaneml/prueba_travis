@@ -36,13 +36,18 @@ jobs:
           command: curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
         
       - run: sudo apt-get install nodejs -y
-      - run: sudo apt-get install npm
+      - run: sudo apt-get install npm -g
       - run: 
           name: update-npm
           command: sudo apt-get install -y build-essential
 
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+
       - restore_cache:
-          key: dependency-cache-{{ checksum "package-lock.json" }}
+          key: v1-dependency-cache-{{ checksum "package-lock.json" }}
 
       
 
