@@ -23,7 +23,7 @@ jobs:
           command: |
             python3 -m venv venv
             . venv/bin/activate	
-            make dependences
+          comand:  make dependences
             # sudo pip3 install pipenv
             # sudo pipenv install
             # sudo pip3 install -U pytest
