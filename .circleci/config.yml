@@ -20,7 +20,7 @@ jobs:
       - checkout
       - run:
         name: install curl
-        command: sudo apt install curl
+        command: sudo apt-get install curl
       - run: 
         name: install dependences node
         command: curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
