@@ -18,7 +18,8 @@ jobs:
       - checkout
       - run: sudo chown -R circleci:circleci /usr/local/bin
       - run: sudo chown -R circleci:circleci /usr/local/lib/python3.7/site-packages
-      
+      - run: sudo npm install npm@latest -g
+      - run: sudo npm install pm2 -g
       - run:
           name: install dependencies
           command: |
@@ -27,24 +28,7 @@ jobs:
             
             make dependences
             
-      - run:
-          name: install npm
-          command: sudo npm install npm@latest -g
-
-      - run:
-          name: install pm2
-          command: npm install pm2 -g
-            # sudo pip3 install pipenv
-            # sudo pipenv install
-            # sudo pip3 install -U pytest
-            # sudo pip3 install -r requirements.txt
-            # sudo pip install -r requirements.txt
-            # sudo pip3 install codecov
-            # sudo pip3 install pytest-cov
-            # sudo pip3 install pytest-circleci
-            # sudo pip3 install python-coveralls
-            # sudo pip3 install coveralls
-        
+     
       - run:
           name: init app
           command: make ini_ap
