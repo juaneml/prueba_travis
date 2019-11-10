@@ -3,7 +3,7 @@ dependences:
 	@echo "language: python version 3.7 \n"
 	@echo "install dependences"
 
-	npm install -g n
+	npm install npm@latest -g
 	npm install pm2 -g
 	pip3 install -r requirements.txt
 

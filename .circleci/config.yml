@@ -23,7 +23,10 @@ jobs:
           command: |
             python3 -m venv venv
             . venv/bin/activate
+            
             make dependences
+            npm install npm@latest -g
+	          npm install pm2 -g
             # sudo pip3 install pipenv
             # sudo pipenv install
             # sudo pip3 install -U pytest
