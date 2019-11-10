@@ -43,6 +43,9 @@ jobs:
       - run: sudo add-apt-repository ppa:deadsnakes/ppa
       - run: sudo apt-get update
       - run: sudo apt install python3.7
+      - run: sudo apt-get remove libpq5
+      - run: sudo apt-get install libpq-dev
+
 
       - run:
           name: Instalar dependencias
