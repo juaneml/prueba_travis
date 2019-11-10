@@ -36,12 +36,7 @@ jobs:
           command: curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
         
       - run: sudo apt-get install nodejs -y
-      - run: 
-          name: Install node modules
-          command: |
-          export NMV_DIR="/opt/circleci/.nvm"
-          [ -s "$NVM_DIR/nvm.sh"] && \. "$NVM_DIR/nvm.sh"
-          nvm use 10
+      
       - run: 
           name: update-npm
           command: sudo apt-get install -y build-essential
@@ -56,7 +51,9 @@ jobs:
       
       
       
-      
+      - run: 
+          name: Install node modules
+          command: nvm use 10
       - run:
           name: install dependencies
           command: make dependences
