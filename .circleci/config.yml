@@ -58,6 +58,7 @@ jobs:
             pip install --user pytest
             . venv/bin/activate
       
+      - run: make dependences
       # - run:
       #     name: install curl
       #     command: sudo apt-get install curl
