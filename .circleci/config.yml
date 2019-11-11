@@ -4,29 +4,29 @@
 version: 2
 jobs:
   build:
-    machine:
-      image: ubuntu-1604:201903-01
+    docker:
+      specify the version you desire here
+      use `-browsers` prefix for selenium tests, e.g. `3.6.1-browsers`
+      - image: circleci/python:3.7-rc-node
+      ##Specify service dependencies here if necessary
+      ##CircleCI maintains a library of pre-built images
+      ##documented at https://circleci.com/docs/2.0/circleci-images/
+      - image: circleci/postgres:9.4
+    # machine:
+    #   image: ubuntu-1604:201903-01
       
-      python:
-        version: 3.7
-      pre:
-        - pyenv local 3.7.5
-        - virtualenv venv
+    #   python:
+    #     version: 3.7
+    #   pre:
+    #     - pyenv local 3.7.5
+    #     - virtualenv venv
 
-      dependencies:
-        - pip install --upgrade pip
-        - pip install --upgrade
-        - pip install circleci
-        - sudo apt-get -y install python3-pip
-    #docker:
-      # specify the version you desire here
-      # use `-browsers` prefix for selenium tests, e.g. `3.6.1-browsers`
-      #- image: circleci/python:3.7
-      #- image: circleci/node:4.8.2
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/postgres:9.4
+    #   dependencies:
+    #     - pip install --upgrade pip
+    #     - pip install --upgrade
+    #     - pip install circleci
+    #     - sudo apt-get -y install python3-pip
+    
     working_directory: ~/prueba_travis
     steps:
       - checkout
@@ -34,17 +34,17 @@ jobs:
           name: "Set Python Version"
           command: pyenv global 3.7.0
           
-      - run: sudo apt-get update
+      # - run: sudo apt-get update
       
-      - run: 
-          name: install python 3
-          command: sudo apt-get install software-properties-common
+      # - run: 
+      #     name: install python 3
+      #     command: sudo apt-get install software-properties-common
 
-      - run: sudo add-apt-repository ppa:deadsnakes/ppa
-      - run: sudo apt-get update
-      - run: sudo apt install python3.7
-      - run: sudo apt-get remove libpq5
-      - run: sudo apt-get install libpq-dev
+      # - run: sudo add-apt-repository ppa:deadsnakes/ppa
+      # - run: sudo apt-get update
+      # - run: sudo apt install python3.7
+      # - run: sudo apt-get remove libpq5
+      # - run: sudo apt-get install libpq-dev
 
 
       - run:
@@ -54,34 +54,34 @@ jobs:
             pip install --user pytest
             . venv/bin/activate
       
-      - run:
-          name: install curl
-          command: sudo apt-get install curl
+      # - run:
+      #     name: install curl
+      #     command: sudo apt-get install curl
       #- run: 
       #    name: install dependences node
       #    command: curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
         
       #- run: sudo apt-get install nodejs -y
       - run: sudo apt-get install npm 
-      - run: 
-          name: update-npm
-          command: sudo apt-get install -y build-essential
+      # - run: 
+      #     name: update-npm
+      #     command: sudo apt-get install -y build-essential
 
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
+      # - save_cache:
+      #     paths:
+      #       - node_modules
+      #     key: v1-dependencies-{{ checksum "package.json" }}
 
-      - restore_cache:
-          key: v1-dependency-cache-{{ checksum "package-lock.json" }}
+      # - restore_cache:
+      #     key: v1-dependency-cache-{{ checksum "package-lock.json" }}
 
-      - run: sudo apt-get update
-      - run: sudo apt-get -y install python3-pip
-      - run:
-          name: install dependencies
-          command: make dependences
-            #|
-            #python3 -m venv venv
+      # - run: sudo apt-get update
+      # - run: sudo apt-get -y install python3-pip
+      # - run:
+      #     name: install dependencies
+      #     command: make dependences
+      #       #|
+      #       #python3 -m venv venv
             #. venv/bin/activate
             
             
