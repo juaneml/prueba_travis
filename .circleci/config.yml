@@ -58,7 +58,7 @@ jobs:
       #       pip install --user pytest
       #       . venv/bin/activate
       
-      - run: pip3 install -r requirements.txt
+      - run: sudo pip3 install -r requirements.txt
       - run: sudo npm install npm-install-all -g
       - run: sudo npm install pm2 -g
       # - run:
