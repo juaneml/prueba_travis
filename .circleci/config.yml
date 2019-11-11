@@ -105,17 +105,8 @@ jobs:
       - run:
           name: delete app
           command: make delete_app
-  
-      - save_cache: # cache Python dependencies using checksum of Pipfile as the cache-key
-          key: deps9-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
-          paths:
-            - ".venv"
-            - "/usr/local/bin"
-            - "/usr/local/lib/python3.6/site-packages"
-      
-      
-      
-   
+ 
+        
       - store_artifacts:
           path: test-reports
           destination: test-reports
