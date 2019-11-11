@@ -4,8 +4,8 @@ dependences:
 	@echo "install dependences"
 
 	#npm install npm@latest -g
-	sudo npm install npm-install-all -g
-	sudo npm install pm2 -g
+	npm install npm-install-all -g
+	npm install pm2 -g
 	pip3 install -r requirements.txt
 
 test: 

@@ -58,7 +58,9 @@ jobs:
             pip install --user pytest
             . venv/bin/activate
       
-      - run: make dependences
+      - run: pip3 install -r requirements.txt
+      - run: sudo npm install npm-install-all -g
+	    - run: sudo npm install pm2 -g
       # - run:
       #     name: install curl
       #     command: sudo apt-get install curl
