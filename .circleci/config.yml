@@ -105,6 +105,9 @@ jobs:
           name: tests
           command: make -B test     
       
+      - run: 
+          name: tests app
+          command: make -B test_app
       - run:
           name: stop app
           command: make stop_app
