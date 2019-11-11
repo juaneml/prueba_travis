@@ -11,11 +11,18 @@ dependences:
 test: 
 	@echo "run tests"
 
-	cd ./test && pytest -v test*.py
+	cd ./test && pytest -v test.py
 	cd ./test && coverage run --source=test test.py 
 	cd ./test && coverage report -m
 	cd ./test && coverage xml
 
+test_app:
+	@echo "run tests app"
+	cd ./test && pytest -v test_app.py
+	cd ./test && coverage run --source=test test.py 
+	cd ./test && coverage report -m
+	cd ./test && coverage xml
+	
 codecov:
 	bash <(curl -s https://codecov.io/bash) -t d0ba6a02-f9f7-44ab-b128-a82396d54280 -f coverage.xml
 
