@@ -5,28 +5,8 @@ version: 2
 jobs:
   build:
     docker:
-      # specify the version you desire here
-      # use `-browsers` prefix for selenium tests, e.g. `3.6.1-browsers`
       - image: circleci/python:3.7-rc-node
-      ##Specify service dependencies here if necessary
-      ##CircleCI maintains a library of pre-built images
-      ##documented at https://circleci.com/docs/2.0/circleci-images/
-      #- image: circleci/postgres:9.4
-    # machine:
-    #   image: ubuntu-1604:201903-01
-      
-    #   python:
-    #     version: 3.7
-    #   pre:
-    #     - pyenv local 3.7.5
-    #     - virtualenv venv
-
-    #   dependencies:
-    #     - pip install --upgrade pip
-    #     - pip install --upgrade
-    #     - pip install circleci
-    #     - sudo apt-get -y install python3-pip
-    
+     
     working_directory: ~/prueba_travis
     steps:
       - checkout
@@ -36,62 +16,10 @@ jobs:
             - v1-dependencies-{{ checksum "requirements.txt" }}
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
-
-          
-      # - run: sudo apt-get update
-      
-      # - run: 
-      #     name: install python 3
-      #     command: sudo apt-get install software-properties-common
-
-      # - run: sudo add-apt-repository ppa:deadsnakes/ppa
-      # - run: sudo apt-get update
-      # - run: sudo apt install python3.7
-      # - run: sudo apt-get remove libpq5
-      # - run: sudo apt-get install libpq-dev
-
-
-      # - run:
-      #     name: Instalar dependencias
-      #     command: |
-      #       python3 -m venv venv
-      #       pip install --user pytest
-      #       . venv/bin/activate
-      
+ 
       - run: sudo pip3 install -r requirements.txt
       - run: sudo npm install npm-install-all -g
       - run: sudo npm install pm2 -g
-      # - run:
-      #     name: install curl
-      #     command: sudo apt-get install curl
-      #- run: 
-      #    name: install dependences node
-      #    command: curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
-        
-      #- run: sudo apt-get install nodejs -y
-      #- run: sudo apt-get install npm 
-      # - run: 
-      #     name: update-npm
-      #     command: sudo apt-get install -y build-essential
-
-      # - save_cache:
-      #     paths:
-      #       - node_modules
-      #     key: v1-dependencies-{{ checksum "package.json" }}
-
-      # - restore_cache:
-      #     key: v1-dependency-cache-{{ checksum "package-lock.json" }}
-
-      # - run: sudo apt-get update
-      # - run: sudo apt-get -y install python3-pip
-      # - run:
-      #     name: install dependencies
-      #     command: make dependences
-      #       #|
-      #       #python3 -m venv venv
-            #. venv/bin/activate
-            
-            
      
       - run:
           name: init app
@@ -108,6 +36,11 @@ jobs:
       - run: 
           name: tests app
           command: make -B test_app
+      
+      - run:
+          name: codecov
+          command: make codecov
+          
       - run:
           name: stop app
           command: make stop_app
@@ -116,7 +49,4 @@ jobs:
           name: delete app
           command: make delete_app
  
-        
-      - store_artifacts:
-          path: test-reports
-          destination: test-reports
+
