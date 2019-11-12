@@ -11,16 +11,10 @@ dependences:
 test: 
 	@echo "run tests"
 	cd ./test && pytest --cov=test	test.py test_app.py
-	cd ./test && pytest -m pytest --cov=test
-	cd ./test && coverage run -m pytest 
-	cd ./test && coverage report -m
+	cd ./test && coverage run  --omit=/usr/local/lib/python3.7/* -p test.py 
+	cd ./test && coverage run  --omit=/usr/local/lib/python3.7/* -p test_app.py 
+	cd ./test; coverage combine
 	cd ./test && coverage xml
-	#cd ./test; pytest -v test.py --cov=prinpipal.py --cov-report =
-	#cd ./test; pytest -v test_app.py --cov=proyecto_app.py --cov-report=
-	#cd ./test; coverage run --source=test test.py 
-	#cd ./test && coverage report -m
-	#cd ./test && coverage xml
-
 
 test_app:
 	@echo "run tests app"
