@@ -19,8 +19,6 @@ script:
   - make ini_ap
   - make status
   - make -B test
-  - make -B test_app
- 
 
 after_success:
   - make stop_app

@@ -16,13 +16,6 @@ test:
 	cd ./test; coverage combine
 	cd ./test && coverage xml
 
-test_app:
-	@echo "run tests app"
-	#cd ./test; pytest -v test_app.py
-	#cd ./test && coverage run --source=test_app test_app.py 
-	#cd ./test && coverage report -m
-	#cd ./test && coverage xml
-
 codecov:
 	#bash <(curl -s https://codecov.io/bash) -t d0ba6a02-f9f7-44ab-b128-a82396d54280 -f coverage.xml
 	cd ./test && bash <(curl -s https://codecov.io/bash) -t d083f686-8673-49f1-8b91-24afe8872f17 -f coverage.xml
