@@ -11,14 +11,23 @@ dependences:
 test: 
 	@echo "run tests"
 	cd ./test && pytest --cov=test	test.py test_app.py
-	cd ./test && coverage run  --omit=/usr/local/lib/python3.7/* -p test.py 
-	cd ./test && coverage run  --omit=/usr/local/lib/python3.7/* -p test_app.py 
-	cd ./test; coverage combine
+	cd ./test && coverage run -p --source=test test.py 
+	cd ./test && coverage report -m
 	cd ./test && coverage xml
+	#--omit=/usr/local/lib/python3.7/* -p test.py 
+	cd ./test && coverage run -p --source=test_app test_app.py 
+	cd ./test && coverage report -m
+	cd ./test && coverage xml -o coverage1.xml
+	  #--omit=/usr/local/lib/python3.7/* -p  
+	#cd ./test; coverage combine
+	#cd ./test && coverage html 
+	##xml
 
 codecov:
 	#bash <(curl -s https://codecov.io/bash) -t d0ba6a02-f9f7-44ab-b128-a82396d54280 -f coverage.xml
 	cd ./test && bash <(curl -s https://codecov.io/bash) -t d083f686-8673-49f1-8b91-24afe8872f17 -f coverage.xml
+	cd ./test && bash <(curl -s https://codecov.io/bash) -t d083f686-8673-49f1-8b91-24afe8872f17 -f coverage1.xml
+
 
 ini_ap:
 	@echo "Iniciamos la appp puerto 80000"
