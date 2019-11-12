@@ -33,10 +33,6 @@ jobs:
           name: tests
           command: make -B test     
       
-      - run: 
-          name: tests app
-          command: make -B test_app
-      
       #- run:
        #   name: codecov
        #   command: make codecov
