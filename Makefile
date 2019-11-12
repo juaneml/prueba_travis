@@ -10,8 +10,8 @@ dependences:
 
 test: 
 	@echo "run tests"
-	pytest --cov=prueba_travis prueba_travis/test
-	pytest -m pytest --cov=prueba_travis prueba_travis/test
+	cd ./test && pytest --cov=test	test.py test_app.py
+	cd ./test && pytest -m pytest --cov=test
 	cd ./test && coverage run -m pytest 
 	cd ./test && coverage report -m
 	cd ./test && coverage xml
