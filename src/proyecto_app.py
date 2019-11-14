@@ -80,4 +80,4 @@ def method_post():
 @hug.get('/version')
 def post():
     return method_post()
-if __name__ == '__main__':
+#if __name__ == '__main__':
