@@ -31,6 +31,6 @@ after_success:
 
   - coveralls
 
-env:
-  global:
-  - CODECOV_TOKEN=:uuid-repo-token
+#env:
+  #global:
+  #- CODECOV_TOKEN=:uuid-repo-token
