@@ -29,3 +29,6 @@ after_success:
 
   - coveralls
 
+env:
+  global:
+  - secret:bUBSyKpz2lPN9XwePvmlS98EisNmSr1El8iVHIl4WURCcSUOO1xWyxXvGqgNBmWQFNOJM6ga6qHJjyqTQiLqIaKaIdJvO2UCkbqXQCbNw6g=
