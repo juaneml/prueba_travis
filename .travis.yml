@@ -25,10 +25,12 @@ after_success:
   - make delete_app
   
   - cd ./test  
-  - bash <(curl -s https://codecov.io/bash) -t CODECOV_TOKEN -f coverage.xml
+  
+  - bash <(curl -s https://codecov.io/bash) -f coverage.xml
+  #-t CODECOV_TOKEN -f coverage.xml
 
   - coveralls
 
 env:
   global:
-  - secure: bUBSyKpz2lPN9XwePvmlS98EisNmSr1El8iVHIl4WURCcSUOO1xWyxXvGqgNBmWQFNOJM6ga6qHJjyqTQiLqIaKaIdJvO2UCkbqXQCbNw6g=
+  - CODECOV_TOKEN=:uuid-repo-token
